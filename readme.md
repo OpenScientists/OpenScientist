@@ -16,55 +16,23 @@ graph TD
 
     ROOT --> NAT("🔬 Natural Sciences")
     ROOT --> FORM("📐 Formal Sciences")
-    ROOT --> CROSS("🔀 Cross-Domain")
 
-    NAT --> PHY("⚛️ Physics")
-    NAT --> BIO("🧬 Biology")
-    NAT --> CHEM("⚗️ Chemistry")
-    NAT --> NEURO("🧠 Neuroscience")
+    NAT --> BIOLOGY("🧬 Biology")
+    NAT --> CHEMISTRY("⚗️ Chemistry")
+    FORM --> COMPUTER_SCIENCE("💻 Computer Science")
+    ROOT --> CROSS_DOMAIN("🔀 Cross Domain")
+    FORM --> MATHEMATICS("➗ Mathematics")
+    NAT --> NEUROSCIENCE("🧠 Neuroscience")
+    NAT --> PHYSICS("⚛️ Physics")
 
-    PHY --> PHY1["Quantum Mechanics"]
-    PHY --> PHY2["Thermodynamics"]
-    PHY --> PHY3["Condensed Matter"]
-    PHY --> PHY4["Astrophysics"]
-
-    BIO --> BIO1["Molecular Biology"]
-    BIO --> BIO2["Genetics"]
-    BIO --> BIO3["Ecology"]
-    BIO --> BIO4["Evolutionary Biology"]
-
-    CHEM --> CHEM1["Organic Chemistry"]
-    CHEM --> CHEM2["Physical Chemistry"]
-    CHEM --> CHEM3["Materials Science"]
-
-    NEURO --> NEURO1["Computational Neuroscience"]
-    NEURO --> NEURO2["Cognitive Science"]
-
-    FORM --> MATH("➗ Mathematics")
-    FORM --> CS("💻 Computer Science")
-
-    MATH --> MATH1["Analysis"]
-    MATH --> MATH2["Algebra"]
-    MATH --> MATH3["Statistics & Probability"]
-    MATH --> MATH4["Topology"]
-
-    CS --> CS1["Machine Learning"]
-    CS --> CS2["Algorithms"]
-    CS --> CS3["Systems"]
-
-    CROSS --> CR1["AI × Biology"]
-    CROSS --> CR2["AI × Physics"]
-    CROSS --> CR3["AI × Chemistry"]
-
-    classDef root fill:#1a1a2e,stroke:#4A90D9,stroke-width:3px,color:#fff,font-size:16px
-    classDef group fill:#16213e,stroke:#4A90D9,stroke-width:2px,color:#7eb8f7,font-weight:bold
-    classDef domain fill:#0f3460,stroke:#4A90D9,stroke-width:1.5px,color:#a8d4ff
-    classDef leaf fill:#ffffff,stroke:#d0d7de,stroke-width:1px,color:#24292f
+    classDef root    fill:#1a1a2e,stroke:#4A90D9,stroke-width:3px,color:#fff,font-weight:bold
+    classDef group   fill:#16213e,stroke:#4A90D9,stroke-width:2px,color:#7eb8f7,font-weight:bold
+    classDef domain  fill:#0f3460,stroke:#4A90D9,stroke-width:1.5px,color:#a8d4ff
+    classDef subdomain fill:#ffffff,stroke:#d0d7de,stroke-width:1px,color:#24292f
 
     class ROOT root
-    class NAT,FORM,CROSS group
-    class PHY,BIO,CHEM,NEURO,MATH,CS domain
-    class PHY1,PHY2,PHY3,PHY4,BIO1,BIO2,BIO3,BIO4,CHEM1,CHEM2,CHEM3,NEURO1,NEURO2,MATH1,MATH2,MATH3,MATH4,CS1,CS2,CS3,CR1,CR2,CR3 leaf
+    class NAT,FORM group
+    class BIOLOGY,CHEMISTRY,COMPUTER_SCIENCE,CROSS_DOMAIN,MATHEMATICS,NEUROSCIENCE,PHYSICS domain
 ```
 
 ---
