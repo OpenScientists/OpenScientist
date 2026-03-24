@@ -1,271 +1,294 @@
 #!/usr/bin/env python3
 """
-Scan skills/ folder structure, draw a knowledge-tree PNG, save to
-assets/knowledge-tree.png, and update the diagram in readme.md.
+Scan skills/ folder structure, draw a knowledge-tree PNG with full emoji
+support using Pillow + Apple Color Emoji, save to assets/knowledge-tree.png,
+and update the image tag in readme.md.
 
-Requirements: pip install matplotlib
+Requirements: pip install pillow   (already satisfies matplotlib users too)
 Usage:        python tools/build_tree_image.py
 """
 
-import re
-import math
+import re, math
 from pathlib import Path
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-from matplotlib.patches import FancyBboxPatch
+from PIL import Image, ImageDraw, ImageFont
 
-# ── paths ────────────────────────────────────────────────────────────────────
+# ── paths ─────────────────────────────────────────────────────────────────────
 REPO_ROOT  = Path(__file__).parent.parent
 SKILLS_DIR = REPO_ROOT / "skills"
 ASSETS_DIR = REPO_ROOT / "assets"
 OUTPUT_PNG = ASSETS_DIR / "knowledge-tree.png"
 README     = REPO_ROOT / "readme.md"
 
-# ── domain metadata ──────────────────────────────────────────────────────────
+# ── font paths (macOS) ────────────────────────────────────────────────────────
+FONT_REGULAR = "/System/Library/Fonts/HelveticaNeue.ttc"
+FONT_BOLD    = "/System/Library/Fonts/HelveticaNeue.ttc"
+FONT_EMOJI   = "/System/Library/Fonts/Apple Color Emoji.ttc"
+
+# ── domain metadata ───────────────────────────────────────────────────────────
 DOMAIN_EMOJI = {
-    "physics":          "⚛",
-    "biology":          "◉",
-    "chemistry":        "⚗",
-    "mathematics":      "∑",
-    "neuroscience":     "◈",
-    "computer-science": "⌨",
-    "cross-domain":     "∞",
+    "physics":          "⚛️",
+    "biology":          "🧬",
+    "chemistry":        "⚗️",
+    "mathematics":      "➗",
+    "neuroscience":     "🧠",
+    "computer-science": "💻",
+    "cross-domain":     "🔀",
 }
+NATURAL = {"physics", "biology", "chemistry", "neuroscience"}
+FORMAL  = {"mathematics", "computer-science"}
 
-NATURAL  = {"physics", "biology", "chemistry", "neuroscience"}
-FORMAL   = {"mathematics", "computer-science"}
+# ── colours ───────────────────────────────────────────────────────────────────
+BG          = "#F6F8FA"
+LINE_COL    = "#ADC8E6"
+ROOT_FILL   = "#0D2137";  ROOT_TEXT   = "#FFFFFF"
+GROUP_FILL  = "#174D7A";  GROUP_TEXT  = "#FFFFFF"
+DOM_FILL    = "#2A7EC8";  DOM_TEXT    = "#FFFFFF"
+SUB_FILL    = "#FFFFFF";  SUB_TEXT    = "#1B3A6B";  SUB_EDGE = "#ADC8E6"
+TITLE_COL   = "#5A7A9A"
 
-# ── colour palette ────────────────────────────────────────────────────────────
-C = dict(
-    bg        = "#F6F8FA",
-    line      = "#ADC8E6",
-    root_fill = "#0D2137",
-    root_text = "#FFFFFF",
-    group_fill= "#174D7A",
-    group_text= "#FFFFFF",
-    dom_fill  = "#2A7EC8",
-    dom_text  = "#FFFFFF",
-    sub_fill  = "#FFFFFF",
-    sub_text  = "#1B3A6B",
-    sub_edge  = "#ADC8E6",
-)
+def hex2rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
 
-# ── tree node ────────────────────────────────────────────────────────────────
+# ── tree node ─────────────────────────────────────────────────────────────────
 class Node:
-    def __init__(self, key: str, label: str, kind: str):
+    def __init__(self, key, emoji, label, kind):
         self.key      = key
+        self.emoji    = emoji   # may be "" for groups/root
         self.label    = label
-        self.kind     = kind          # root | group | domain | subdomain
-        self.children: list["Node"] = []
-        self.x = 0.0
-        self.y = 0.0
-        self._span = 0.0              # horizontal space allocated
+        self.kind     = kind    # root | group | domain | subdomain
+        self.children = []
+        self.x = self.y = 0.0
+        self._span    = 0.0
 
 # ── scan ──────────────────────────────────────────────────────────────────────
-def scan() -> dict[str, list[str]]:
-    tree: dict[str, list[str]] = {}
+def scan():
+    tree = {}
     for d in sorted(SKILLS_DIR.iterdir()):
         if d.is_dir() and not d.name.startswith("_"):
             tree[d.name] = sorted(
                 s.name for s in d.iterdir()
-                if s.is_dir() and not s.name.startswith("_")
-            )
+                if s.is_dir() and not s.name.startswith("_"))
     return tree
 
-
-def fmt(name: str) -> str:
+def fmt(name):
     words = name.replace("-", " ").title().split()
-    # line-break long labels
     if len(words) > 2:
         mid = math.ceil(len(words) / 2)
         return " ".join(words[:mid]) + "\n" + " ".join(words[mid:])
     return " ".join(words)
 
+def build_tree(data):
+    root = Node("root", "🌍", "OpenScientist", "root")
 
-def build_tree(scan_data: dict[str, list[str]]) -> Node:
-    root = Node("root", "OpenScientist", "root")
+    nat_d  = [d for d in data if d in NATURAL]
+    form_d = [d for d in data if d in FORMAL]
+    other  = [d for d in data if d not in NATURAL and d not in FORMAL]
 
-    nat_domains  = [d for d in scan_data if d in NATURAL]
-    form_domains = [d for d in scan_data if d in FORMAL]
-    other        = [d for d in scan_data if d not in NATURAL and d not in FORMAL]
-
-    def add_domain(parent: Node, domain: str):
-        e   = DOMAIN_EMOJI.get(domain, "·")
-        n   = Node(domain, f"{e}  {fmt(domain)}", "domain")
+    def add_domain(parent, domain):
+        e = DOMAIN_EMOJI.get(domain, "◉")
+        n = Node(domain, e, fmt(domain), "domain")
         parent.children.append(n)
-        for sub in scan_data.get(domain, []):
-            n.children.append(Node(f"{domain}/{sub}", fmt(sub), "subdomain"))
+        for sub in data.get(domain, []):
+            n.children.append(Node(f"{domain}/{sub}", "", fmt(sub), "subdomain"))
 
-    if nat_domains:
-        nat = Node("natural", "Natural Sciences", "group")
+    if nat_d:
+        nat = Node("natural", "🔬", "Natural Sciences", "group")
         root.children.append(nat)
-        for d in nat_domains:
-            add_domain(nat, d)
+        for d in nat_d: add_domain(nat, d)
 
-    if form_domains:
-        frm = Node("formal", "Formal Sciences", "group")
+    if form_d:
+        frm = Node("formal", "📐", "Formal Sciences", "group")
         root.children.append(frm)
-        for d in form_domains:
-            add_domain(frm, d)
+        for d in form_d: add_domain(frm, d)
 
-    for d in other:
-        add_domain(root, d)
-
+    for d in other: add_domain(root, d)
     return root
 
+# ── layout ────────────────────────────────────────────────────────────────────
+UNIT = 1.0
 
-# ── layout (Reingold-Tilford style, simplified) ───────────────────────────────
-UNIT = 1.0   # base horizontal unit per leaf
+def compute_span(n):
+    if not n.children: n._span = UNIT; return
+    for c in n.children: compute_span(c)
+    n._span = sum(c._span for c in n.children)
 
-def compute_span(node: Node) -> float:
-    if not node.children:
-        node._span = UNIT
-    else:
-        for c in node.children:
-            compute_span(c)
-        node._span = sum(c._span for c in node.children)
-    return node._span
+def assign_xy(n, x_left, depth, y_step):
+    n.y = depth * y_step
+    if not n.children:
+        n.x = x_left + n._span / 2; return
+    cur = x_left
+    for c in n.children:
+        assign_xy(c, cur, depth + 1, y_step); cur += c._span
+    n.x = x_left + n._span / 2
 
+def max_depth(n, d=0):
+    return d if not n.children else max(max_depth(c, d+1) for c in n.children)
 
-def assign_positions(node: Node, x_left: float, depth: int, y_step: float):
-    node.y = -depth * y_step
-    if not node.children:
-        node.x = x_left + node._span / 2
-        return
-    cursor = x_left
-    for c in node.children:
-        assign_positions(c, cursor, depth + 1, y_step)
-        cursor += c._span
-    node.x = (x_left + cursor) / 2
+# ── drawing helpers ───────────────────────────────────────────────────────────
+def rounded_rect(draw, x0, y0, x1, y1, r, fill, outline=None, lw=0):
+    draw.rounded_rectangle([x0, y0, x1, y1], radius=r,
+                            fill=hex2rgb(fill),
+                            outline=hex2rgb(outline) if outline else None,
+                            width=lw)
 
+_EMOJI_VALID = [20, 32, 40, 48, 64, 96, 160]
 
-# ── drawing ───────────────────────────────────────────────────────────────────
-def node_style(kind: str) -> dict:
-    if kind == "root":
-        return dict(fc=C["root_fill"], ec=C["root_fill"], tc=C["root_text"],
-                    bstyle="round,pad=0.35", fs=11, fw="bold", lw=0)
-    if kind == "group":
-        return dict(fc=C["group_fill"], ec=C["group_fill"], tc=C["group_text"],
-                    bstyle="round,pad=0.3", fs=9.5, fw="bold", lw=0)
-    if kind == "domain":
-        return dict(fc=C["dom_fill"], ec=C["dom_fill"], tc=C["dom_text"],
-                    bstyle="round,pad=0.28", fs=8.8, fw="semibold", lw=0)
-    # subdomain
-    return dict(fc=C["sub_fill"], ec=C["sub_edge"], tc=C["sub_text"],
-                bstyle="round,pad=0.25", fs=8, fw="normal", lw=1.0)
+def _nearest_emoji_size(size):
+    return min(_EMOJI_VALID, key=lambda s: abs(s - size))
 
+def get_fonts(size_text, size_emoji):
+    try:
+        ft = ImageFont.truetype(FONT_BOLD, size_text)
+    except Exception:
+        ft = ImageFont.load_default()
+    try:
+        fe = ImageFont.truetype(FONT_EMOJI, _nearest_emoji_size(size_emoji))
+    except Exception:
+        fe = ft
+    return ft, fe
 
-def draw_node(ax, node: Node, x_scale: float, box_w: float):
-    style = node_style(node.kind)
-    x, y  = node.x * x_scale, node.y
+# ── node dimensions (in pixels) ───────────────────────────────────────────────
+NODE_SPEC = {
+    "root":      dict(fill=ROOT_FILL,  text=ROOT_TEXT,  size=22, pad_x=32, pad_y=14, r=14),
+    "group":     dict(fill=GROUP_FILL, text=GROUP_TEXT, size=18, pad_x=26, pad_y=11, r=12),
+    "domain":    dict(fill=DOM_FILL,   text=DOM_TEXT,   size=16, pad_x=22, pad_y=10, r=10),
+    "subdomain": dict(fill=SUB_FILL,   text=SUB_TEXT,   size=14, pad_x=18, pad_y=8,  r=8,
+                      outline=SUB_EDGE, lw=2),
+}
 
-    # box width adapts to label length but stays within bounds
-    text_lines = node.label.split("\n")
-    longest    = max(len(l) for l in text_lines)
-    w = min(box_w, max(box_w * 0.55, longest * 0.072))
-    h = 0.30 + 0.22 * (len(text_lines) - 1)
+def measure_node(n, scale):
+    sp = NODE_SPEC[n.kind]
+    ft, _ = get_fonts(sp["size"], sp["size"])
+    # measure text block
+    lines  = n.label.split("\n")
+    bbox   = [ft.getbbox(l) for l in lines]
+    tw     = max(b[2]-b[0] for b in bbox)
+    th_sum = sum(b[3]-b[1] for b in bbox) + (len(lines)-1)*4
+    # emoji prefix width
+    ew = 0
+    if n.emoji:
+        _, fe = get_fonts(sp["size"], sp["size"])
+        eb = fe.getbbox(n.emoji + " ")
+        ew = eb[2] - eb[0]
+    w = ew + tw + sp["pad_x"]*2
+    h = th_sum + sp["pad_y"]*2
+    return int(w), int(h)
 
-    box = FancyBboxPatch(
-        (x - w / 2, y - h / 2), w, h,
-        boxstyle=style["bstyle"],
-        facecolor=style["fc"], edgecolor=style["ec"],
-        linewidth=style["lw"], zorder=3,
+def draw_node_pil(draw, n, cx, cy, scale):
+    sp  = NODE_SPEC[n.kind]
+    ft, fe = get_fonts(sp["size"], sp["size"])
+    lines = n.label.split("\n")
+
+    # measure
+    bboxes = [ft.getbbox(l) for l in lines]
+    tw = max(b[2]-b[0] for b in bboxes)
+    lh = max(b[3]-b[1] for b in bboxes)
+    th = lh * len(lines) + 4 * (len(lines)-1)
+
+    ew = 0
+    if n.emoji:
+        eb = fe.getbbox(n.emoji)
+        ew = (eb[2]-eb[0]) + 8
+
+    total_w = ew + tw + sp["pad_x"]*2
+    total_h = th + sp["pad_y"]*2
+
+    x0, y0 = cx - total_w//2, cy - total_h//2
+    x1, y1 = cx + total_w//2, cy + total_h//2
+
+    # box
+    outline = sp.get("outline"); lw = sp.get("lw", 0)
+    draw.rounded_rectangle(
+        [x0, y0, x1, y1], radius=sp["r"],
+        fill=hex2rgb(sp["fill"]),
+        outline=hex2rgb(outline) if outline else None, width=lw,
     )
-    ax.add_patch(box)
-    ax.text(
-        x, y, node.label,
-        ha="center", va="center",
-        color=style["tc"], fontsize=style["fs"],
-        fontweight=style["fw"], zorder=4,
-        linespacing=1.3,
-    )
-    return h / 2  # half-height for connector offset
 
+    # text
+    text_x = x0 + sp["pad_x"] + ew
+    text_y = y0 + sp["pad_y"]
+    tc = hex2rgb(sp["text"])
+    for i, (line, bb) in enumerate(zip(lines, bboxes)):
+        draw.text((text_x, text_y + i*(lh+4)), line, font=ft, fill=tc)
 
-def draw_tree(ax, node: Node, x_scale: float, box_w: float, parent_y_bottom=None):
-    half_h = draw_node(ax, node, x_scale, box_w)
-    nx, ny = node.x * x_scale, node.y
+    # emoji
+    if n.emoji:
+        draw.text((x0 + sp["pad_x"], y0 + sp["pad_y"]), n.emoji,
+                  font=fe, fill=hex2rgb(sp["text"]),
+                  embedded_color=True)
 
-    if parent_y_bottom is not None:
-        ax.plot(
-            [nx, nx], [ny + half_h, parent_y_bottom],
-            color=C["line"], lw=1.2, zorder=1,
-        )
+    return x0, y0, x1, y1, total_w, total_h
 
-    if node.children:
-        child_tops = [c.y - 0.15 for c in node.children]  # approx top of child
-        xs = [c.x * x_scale for c in node.children]
-        y_conn = ny - half_h - 0.12  # horizontal bus line
+# ── recursive draw ────────────────────────────────────────────────────────────
+def draw_tree_pil(draw, n, ox, oy, scale, parent_bottom=None):
+    px = int(n.x * scale) + ox
+    py = int(n.y * scale) + oy
 
-        # vertical stem from node down to bus
-        ax.plot([nx, nx], [ny - half_h, y_conn], color=C["line"], lw=1.2, zorder=1)
-        # horizontal bus
-        ax.plot([min(xs), max(xs)], [y_conn, y_conn], color=C["line"], lw=1.2, zorder=1)
+    x0, y0, x1, y1, w, h = draw_node_pil(draw, n, px, py, scale)
 
-        for child in node.children:
-            draw_tree(ax, child, x_scale, box_w, parent_y_bottom=y_conn)
+    lc = hex2rgb(LINE_COL)
+    if parent_bottom is not None:
+        draw.line([(px, y0), (px, parent_bottom)], fill=lc, width=2)
 
+    if n.children:
+        bus_y = y1 + 18
+        draw.line([(px, y1), (px, bus_y)], fill=lc, width=2)
+        child_xs = [int(c.x * scale) + ox for c in n.children]
+        draw.line([(min(child_xs), bus_y), (max(child_xs), bus_y)], fill=lc, width=2)
+        for c in n.children:
+            draw_tree_pil(draw, c, ox, oy, scale, parent_bottom=bus_y)
 
 # ── main ──────────────────────────────────────────────────────────────────────
 def main():
     ASSETS_DIR.mkdir(exist_ok=True)
 
-    scan_data = scan()
-    root      = build_tree(scan_data)
+    data  = scan()
+    root  = build_tree(data)
     compute_span(root)
 
-    # how many levels deep?
-    def max_depth(n, d=0):
-        return d if not n.children else max(max_depth(c, d+1) for c in n.children)
-    depth   = max_depth(root)
-    y_step  = 1.6
-    x_scale = 1.8
+    depth  = max_depth(root)
+    Y_STEP = 130
+    SCALE  = 180
+    MARGIN = 60
 
-    assign_positions(root, 0, 0, y_step)
+    assign_xy(root, 0, 0, Y_STEP / SCALE)
 
-    fig_w  = max(10, root._span * x_scale * 0.9)
-    fig_h  = max(6,  (depth + 1) * y_step * 0.85 + 1.2)
-    box_w  = min(1.6, fig_w / (root._span + 1))
+    img_w = int(root._span * SCALE) + MARGIN * 2
+    img_h = int((depth + 1) * Y_STEP) + MARGIN * 2 + 50  # +50 for title
 
-    fig, ax = plt.subplots(figsize=(fig_w, fig_h))
-    fig.patch.set_facecolor(C["bg"])
-    ax.set_facecolor(C["bg"])
-    ax.set_aspect("equal")
-    ax.axis("off")
-
-    draw_tree(ax, root, x_scale, box_w)
+    img  = Image.new("RGBA", (img_w, img_h), hex2rgb(BG) + (255,))
+    draw = ImageDraw.Draw(img)
 
     # title
-    ax.text(
-        root.x * x_scale, root.y + 0.75,
-        "OpenScientist — Knowledge Tree",
-        ha="center", va="bottom",
-        fontsize=13, color="#0D2137",
-        fontweight="bold", alpha=0.55,
-    )
+    try:
+        tf = ImageFont.truetype(FONT_REGULAR, 20)
+    except Exception:
+        tf = ImageFont.load_default()
+    title = "OpenScientist — Knowledge Tree"
+    tb = tf.getbbox(title)
+    draw.text(((img_w - (tb[2]-tb[0]))//2, 18), title,
+              font=tf, fill=hex2rgb(TITLE_COL))
 
-    plt.tight_layout(pad=0.4)
-    plt.savefig(OUTPUT_PNG, dpi=160, bbox_inches="tight",
-                facecolor=C["bg"])
-    plt.close()
+    OX = MARGIN
+    OY = MARGIN + 40
+
+    draw_tree_pil(draw, root, OX, OY, SCALE)
+
+    img.convert("RGB").save(OUTPUT_PNG, dpi=(160, 160))
     print(f"Saved: {OUTPUT_PNG}")
 
     # ── patch README ──────────────────────────────────────────────────────────
-    text = README.read_text(encoding="utf-8")
-
-    # Replace mermaid block if present
-    mermaid_pattern = re.compile(r"```mermaid\ngraph TD.*?```\n?", re.DOTALL)
+    text    = README.read_text(encoding="utf-8")
     img_tag = "![Knowledge Tree](assets/knowledge-tree.png)\n"
 
-    if mermaid_pattern.search(text):
-        new_text = mermaid_pattern.sub(img_tag, text, count=1)
+    mermaid = re.compile(r"```mermaid\ngraph TD.*?```\n?", re.DOTALL)
+    if mermaid.search(text):
+        new_text = mermaid.sub(img_tag, text, count=1)
     elif "![Knowledge Tree]" in text:
-        new_text = re.sub(
-            r"!\[Knowledge Tree\]\(assets/knowledge-tree\.png\)",
-            img_tag.strip(), text,
-        )
+        new_text = re.sub(r"!\[Knowledge Tree\]\([^)]+\)", img_tag.strip(), text)
     else:
-        print("Warning: no mermaid block or existing image tag found in README.")
+        print("Warning: no block to replace in README — add manually.")
         return
 
     README.write_text(new_text, encoding="utf-8")
