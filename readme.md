@@ -114,6 +114,8 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](CONTRIBUTING
 
 A domain maintainer listed in [CODEOWNERS](CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
 
+**Don't see your field?** You can propose a new subdomain or top-level domain — see [CONTRIBUTING.md § Propose a New Area](CONTRIBUTING.md#propose-a-new-area).
+
 ---
 
 ## How the Repository is Managed
@@ -245,6 +247,8 @@ cp OpenScientist/skills/physics/quantum-mechanics.md ~/.claude/skills/
 5. **提交 Pull Request** —— 标题格式：`[physics] Add quantum-entanglement skill`
 
 [CODEOWNERS](CODEOWNERS) 中的领域维护者会自动收到 review 请求，负责审核科学内容的准确性。
+
+**没有你的研究方向？** 可以提议新的子领域或顶层领域 —— 参阅 [CONTRIBUTING.md § 提议新领域或子领域](CONTRIBUTING.md#提议新领域或子领域)。
 
 ---
 
