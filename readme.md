@@ -1,6 +1,6 @@
 # 🌍 OpenScientist
 
-> A collaborative repository of Claude Code Skills encoding frontier scientific knowledge across disciplines — contributed by domain experts worldwide.
+> A living repository where the world's leading scientists encode the deepest knowledge of their fields — so that AI can stand on the shoulders of giants.
 
 ```mermaid
 mindmap
@@ -175,7 +175,7 @@ MIT
 
 # 🌍 OpenScientist（中文）
 
-> 一个由各领域前沿科学家共同贡献的 Claude Code Skills 开源仓库 —— 将人类科学知识编码为 AI 可直接调用的能力。
+> 汇聚全球各领域顶尖科学家的毕生所学，让 AI 站在巨人的肩膀上。
 
 ## 这是什么？
 
