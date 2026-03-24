@@ -1,3 +1,9 @@
+<div align="right">
+
+[English](#-openscientist) · [中文](#中文版本)
+
+</div>
+
 # 🌍 OpenScientist
 
 **Our mission: to distill the world's most advanced scientific know-how into AI — and build the AI Scientist.**
@@ -61,6 +67,8 @@ graph TD
     class PHY1,PHY2,PHY3,PHY4,BIO1,BIO2,BIO3,BIO4,CHEM1,CHEM2,CHEM3,NEURO1,NEURO2,MATH1,MATH2,MATH3,MATH4,CS1,CS2,CS3,CR1,CR2,CR3 leaf
 ```
 
+---
+
 ## What is OpenScientist?
 
 OpenScientist is a curated library of **Claude Code Skills** — structured Markdown files that give AI agents deep, expert-level reasoning capabilities in specific scientific domains. Each skill is written by a domain expert and encodes the knowledge, tools, reasoning protocols, and common pitfalls of their field.
@@ -87,8 +95,6 @@ cp OpenScientist/skills/physics/quantum-mechanics.md ~/.claude/skills/
 
 ### What's inside a skill file?
 
-Every skill has the same structure:
-
 | Section | Purpose |
 |---|---|
 | YAML frontmatter | Machine-readable metadata: name, domain, author, status |
@@ -101,8 +107,6 @@ Every skill has the same structure:
 | `## References` | Key papers and textbooks |
 
 ### Quality tiers
-
-Every skill carries a `status` field that tracks review progress:
 
 | Status | Meaning |
 |---|---|
@@ -163,8 +167,6 @@ Edit [CODEOWNERS](CODEOWNERS) and replace the placeholder with their GitHub hand
 skills/physics/    @their-github-handle
 ```
 
-They will now automatically receive review requests for all physics PRs.
-
 ### Promoting a skill's status
 
 After a maintainer reviews a skill, manually update the `status` field in that file:
@@ -193,13 +195,14 @@ MIT
 
 ---
 
----
-
-# 🌍 OpenScientist（中文）
+<details>
+<summary><h2 id="中文版本">🇨🇳 中文版本</h2></summary>
 
 **我们的使命：将人类最前沿的科学知识与 know-how 注入 AI，打造真正的 AI 科学家。**
 
 > 汇聚全球各领域顶尖科学家的毕生所学，让 AI 站在巨人的肩膀上。
+
+---
 
 ## 这是什么？
 
@@ -306,3 +309,19 @@ skills/physics/    @专家的GitHub用户名
 维护者审核通过后，手动修改文件中的 `status` 字段：
 - `draft` → `reviewed`（维护者批准后）
 - `reviewed` → `verified`（在真实工作流中验证后）
+
+---
+
+## 领域列表
+
+| 领域 | Skills 数量 | 维护者 |
+|---|---|---|
+| ⚛️ Physics 物理 | — | *招募中* |
+| 🧬 Biology 生物 | — | *招募中* |
+| ⚗️ Chemistry 化学 | — | *招募中* |
+| ➗ Mathematics 数学 | — | *招募中* |
+| 🧠 Neuroscience 神经科学 | — | *招募中* |
+| 💻 Computer Science 计算机 | — | *招募中* |
+| 🔀 Cross-Domain 跨领域 | — | 核心团队 |
+
+</details>
