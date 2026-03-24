@@ -22,7 +22,6 @@ DOMAIN_EMOJI = {
     "mathematics": "➗",
     "neuroscience": "🧠",
     "computer-science": "💻",
-    "cross-domain": "🔀",
 }
 
 STATUS_BADGE = {
@@ -57,7 +56,7 @@ def main():
             continue
         skill = load_skill(skill_file)
         if skill:
-            domain = skill.get("domain", "cross-domain")
+            domain = skill.get("domain", "unknown")
             by_domain[domain].append(skill)
 
     lines = [

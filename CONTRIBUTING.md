@@ -30,7 +30,6 @@ cp skills/_template.md skills/<domain>/<your-skill-name>.md
 **File naming:** lowercase, hyphen-separated. Examples:
 - `skills/physics/quantum-entanglement.md`
 - `skills/biology/crispr-gene-editing.md`
-- `skills/cross-domain/ai-drug-discovery.md`
 
 ### 3. Fill in the template
 

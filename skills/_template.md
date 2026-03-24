@@ -3,7 +3,7 @@
 name: your-skill-name                        # lowercase, hyphens only. This is the Claude Code invocation name.
 description: >                               # 1-2 sentences: when should this skill be used?
   Describe what this skill does and when to invoke it.
-domain: physics                              # physics | biology | chemistry | mathematics | neuroscience | computer-science | cross-domain
+domain: physics                              # physics | biology | chemistry | mathematics | neuroscience | computer-science
 subdomain: ""                                # optional: more specific area
 author: "Full Name (Institution)"            # e.g. "Dr. Jane Smith (MIT Physics)"
 expertise_level: advanced                    # beginner | intermediate | advanced

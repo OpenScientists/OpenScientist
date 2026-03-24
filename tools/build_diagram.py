@@ -21,13 +21,11 @@ DOMAIN_EMOJI = {
     "mathematics":      "➗",
     "neuroscience":     "🧠",
     "computer-science": "💻",
-    "cross-domain":     "🔀",
 }
 
 # Broad groupings for colour coding (add new domains here as needed)
 NATURAL_SCIENCES = {"physics", "biology", "chemistry", "neuroscience"}
 FORMAL_SCIENCES  = {"mathematics", "computer-science"}
-CROSS_DOMAIN     = {"cross-domain"}
 
 
 def label(name: str) -> str:
@@ -61,7 +59,6 @@ def generate(tree: dict[str, list[str]]) -> str:
     sub_ids:       list[str] = []
     nat_group_ids: list[str] = []
     for_group_ids: list[str] = []
-    crs_group_ids: list[str] = []
 
     # Group intermediate nodes
     has_nat = any(d in NATURAL_SCIENCES for d in tree)
@@ -88,7 +85,6 @@ def generate(tree: dict[str, list[str]]) -> str:
             parent = "FORM"
         else:
             parent = "ROOT"
-            crs_group_ids.append(did)
 
         lines.append(f'    {parent} --> {did}("{emoji} {lbl}")')
 

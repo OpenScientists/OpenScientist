@@ -130,7 +130,6 @@ After a maintainer reviews a skill, manually update the `status` field in that f
 | ➗ Mathematics | — | *Seeking maintainer* |
 | 🧠 Neuroscience | — | *Seeking maintainer* |
 | 💻 Computer Science | — | *Seeking maintainer* |
-| 🔀 Cross-Domain | — | Core team |
 
 ---
 
@@ -267,6 +266,5 @@ skills/physics/    @专家的GitHub用户名
 | ➗ Mathematics 数学 | — | *招募中* |
 | 🧠 Neuroscience 神经科学 | — | *招募中* |
 | 💻 Computer Science 计算机 | — | *招募中* |
-| 🔀 Cross-Domain 跨领域 | — | 核心团队 |
 
 </details>

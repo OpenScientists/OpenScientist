@@ -23,7 +23,7 @@ REQUIRED_FIELDS = {
 
 VALID_DOMAINS = {
     "physics", "biology", "chemistry", "mathematics",
-    "neuroscience", "computer-science", "cross-domain",
+    "neuroscience", "computer-science",
 }
 
 VALID_EXPERTISE_LEVELS = {"beginner", "intermediate", "advanced"}
