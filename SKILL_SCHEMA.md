@@ -4,7 +4,7 @@ This document defines the complete specification for OpenScientist skill files.
 
 ---
 
-## File Location
+## 1. File Location
 
 ```
 skills/<domain>/<skill-name>.md
@@ -15,7 +15,7 @@ skills/<domain>/<skill-name>.md
 
 ---
 
-## Frontmatter Fields
+## 2. Frontmatter Fields
 
 ```yaml
 ---
@@ -33,7 +33,7 @@ reviewed_by: [<string>, ...]    # optional. GitHub usernames of reviewers who ap
 ---
 ```
 
-### Field Reference
+### 2.1 Field Reference
 
 | Field | Required | Type | Valid Values |
 |---|---|---|---|
@@ -51,11 +51,11 @@ reviewed_by: [<string>, ...]    # optional. GitHub usernames of reviewers who ap
 
 ---
 
-## Body Sections
+## 3. Body Sections
 
 The skill body (after frontmatter) should follow this structure. Sections marked **Required** must be present.
 
-### Required Sections
+### 3.1 Required Sections
 
 ```markdown
 ## Purpose
@@ -74,7 +74,7 @@ Step 2: ...
 Mistakes, misconceptions, and edge cases to avoid.
 ```
 
-### Recommended Sections
+### 3.2 Recommended Sections
 
 ```markdown
 ## Examples
@@ -86,7 +86,7 @@ Key papers, textbooks, or resources. Use standard citation format.
 
 ---
 
-## Example Skill
+## 4. Example Skill
 
 ```markdown
 ---
