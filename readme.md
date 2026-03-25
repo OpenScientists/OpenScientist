@@ -189,7 +189,7 @@ skills/physics/    @their-github-handle
 | ⚛️ Physics | Space Physics | Zesen Huang [@huangzesen](https://github.com/huangzesen) | UCLA Postdoc |
 | ⚛️ Physics | Atmospheric and Oceanic Physics | Koutian Wu [@ktwu01](https://github.com/ktwu01) | UT Austin PhD Student |
 | ⚛️ Physics | Chemical Physics | Sijia Chen [@Alexandrina-Chen](https://github.com/Alexandrina-Chen) | Flatiron Institute Research Fellow |
-| 💻 Computer Science | Artificial Intelligence | Yanbo Zhang [@yanbozhang](https://github.com/yanbozhang) | Tufts University Postdoc |
+| 💻 Computer Science | Artificial Intelligence | Yanbo Zhang [@Zhangyanbo](https://github.com/Zhangyanbo) | Tufts University Postdoc |
 | 💻 Computer Science | Hardware Architecture | Zhichen Zeng [@Zhichenzzz](https://github.com/Zhichenzzz) | UW CS PhD Student |
 | 💻 Computer Science | Multiagent Systems | Qisheng Su [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
 | 💻 Computer Science | Cryptography and Security | Xiaohang Yu [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
@@ -365,7 +365,7 @@ skills/physics/    @their-github-handle
 | ⚛️ Physics | Space Physics | 黄泽森 [@huangzesen](https://github.com/huangzesen) | UCLA Postdoc |
 | ⚛️ Physics | Atmospheric and Oceanic Physics | 吴叩天 [@ktwu01](https://github.com/ktwu01) | UT Austin PhD Student |
 | ⚛️ Physics | Chemical Physics | 陈思佳 [@Alexandrina-Chen](https://github.com/Alexandrina-Chen) | Flatiron Institute Research Fellow |
-| 💻 Computer Science | Artificial Intelligence | 章彦博 [@yanbozhang](https://github.com/yanbozhang) | Tufts University Postdoc |
+| 💻 Computer Science | Artificial Intelligence | 章彦博 [@Zhangyanbo](https://github.com/Zhangyanbo) | Tufts University Postdoc |
 | 💻 Computer Science | Hardware Architecture | 曾郅琛 [@Zhichenzzz](https://github.com/Zhichenzzz) | UW CS PhD Student |
 | 💻 Computer Science | Multiagent Systems | 苏启晟 [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
 | 💻 Computer Science | Cryptography and Security | 余晓航 [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
