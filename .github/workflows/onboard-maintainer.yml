@@ -150,7 +150,7 @@ jobs:
           AFFILIATION: ${{ steps.parse.outputs.affiliation }}
         run: |
           NEW_ROW="| ${EMOJI} ${DOMAIN} | ${SUBDOMAIN} | ${ENGLISH_NAME} [@${USERNAME}](https:\/\/github.com\/${USERNAME}) | ${AFFILIATION} |"
-          sed -i "/^> Want to maintain a subdomain/i\\${NEW_ROW}" readme.md
+          sed -i "/^> Want to become a reviewer/i\\${NEW_ROW}" readme.md
           echo "Updated English reviewer table"
 
       - name: Update readme.md Chinese table
@@ -163,7 +163,7 @@ jobs:
           AFFILIATION: ${{ steps.parse.outputs.affiliation }}
         run: |
           NEW_ROW="| ${EMOJI} ${DOMAIN} | ${SUBDOMAIN} | ${CHINESE_NAME} [@${USERNAME}](https:\/\/github.com\/${USERNAME}) | ${AFFILIATION} |"
-          sed -i "/^> 想认领一个子领域/i\\${NEW_ROW}" readme.md
+          sed -i "/^> 想成为审稿人/i\\${NEW_ROW}" readme.md
           echo "Updated Chinese reviewer table"
 
       - name: Update docs/index.html
