@@ -130,7 +130,7 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRI
   ```
 - **Open a pull request** — title format: `[physics/quantum-physics] Add quantum-entanglement skill`
 
-A domain reviewer listed in [CODEOWNERS](.github/CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
+A domain reviewer listed in CODEOWNERS will be automatically assigned to review your PR for scientific accuracy.
 
 **Don't see your field?** You can propose a new subdomain or top-level domain — see [CONTRIBUTING.md § Propose a New Area](utils/CONTRIBUTING.md#3-propose-a-new-area).
 
@@ -167,7 +167,7 @@ Reviewers are domain experts who ensure the scientific quality of skills in thei
 **Permissions**
 - Approve or request changes on PRs touching your subdomain
 - Self-approve and merge your own PRs within your subdomain
-- Auto-assigned as reviewer via [CODEOWNERS](.github/CODEOWNERS) when a PR touches your subdomain
+- Auto-assigned as reviewer via CODEOWNERS when a PR touches your subdomain
 
 [**Apply to become a category reviewer →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
 
@@ -191,7 +191,7 @@ python utils/tools/build_index.py   # writes utils/SKILLS_INDEX.md
 
 ### 6.3 Onboarding a new domain expert
 
-Edit [CODEOWNERS](.github/CODEOWNERS) and replace the placeholder with their GitHub handle:
+Edit CODEOWNERS and replace the placeholder with their GitHub handle:
 
 ```
 skills/physics/    @their-github-handle
@@ -331,7 +331,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
   ```
 - **提交 Pull Request** —— 标题格式：`[physics/quantum-physics] Add quantum-entanglement skill`
 
-[CODEOWNERS](.github/CODEOWNERS) 中的领域审稿人会自动收到 review 请求，负责审核科学内容的准确性。
+CODEOWNERS 中的领域审稿人会自动收到 review 请求，负责审核科学内容的准确性。
 
 **没有你的研究方向？** 可以提议新的子领域或顶层领域 —— 参阅 [CONTRIBUTING.md § 提议新领域或子领域](utils/CONTRIBUTING.md#3-提议新领域或子领域)。
 
@@ -349,7 +349,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 **权限**
 - 对所属子领域的 PR 进行审批或提出修改意见
 - 在自己的子领域内可以自审自批、合并自己的 PR
-- 通过 [CODEOWNERS](.github/CODEOWNERS) 自动分配为审稿人
+- 通过 CODEOWNERS 自动分配为审稿人
 
 [**申请成为类别审稿人 →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
 
@@ -373,7 +373,7 @@ python utils/tools/build_index.py   # 生成 utils/SKILLS_INDEX.md
 
 ### 6.3 添加新的领域专家
 
-编辑 [CODEOWNERS](.github/CODEOWNERS)，将占位符替换为其 GitHub 用户名：
+编辑 CODEOWNERS，将占位符替换为其 GitHub 用户名：
 
 ```
 skills/physics/    @their-github-handle
