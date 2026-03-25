@@ -13,9 +13,9 @@ from PIL import Image, ImageDraw, ImageFont
 import yaml
 
 # ── paths ─────────────────────────────────────────────────────────────────────
-REPO   = Path(__file__).parent.parent
+REPO   = Path(__file__).parent.parent.parent
 SKILLS = REPO / "skills"
-ASSETS = REPO / "assets"
+ASSETS = REPO / "utils" / "assets"
 OUT    = ASSETS / "knowledge-tree-v2.png"
 README = REPO / "readme.md"
 

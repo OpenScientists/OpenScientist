@@ -8,7 +8,7 @@ This folder contains Claude Code Skills for the **Physics** domain.
 
 ## Skills in This Domain
 
-> No skills yet. Be the first to [contribute](../../CONTRIBUTING.md)!
+> No skills yet. Be the first to [contribute](../../utils/CONTRIBUTING.md)!
 
 ## How to Contribute
 
@@ -17,4 +17,4 @@ This folder contains Claude Code Skills for the **Physics** domain.
 3. Fill in every section
 4. Open a pull request
 
-See [CONTRIBUTING.md](../../CONTRIBUTING.md) and [SKILL_SCHEMA.md](../../SKILL_SCHEMA.md) for full details.
+See [CONTRIBUTING.md](../../utils/CONTRIBUTING.md) and [SKILL_SCHEMA.md](../../utils/SKILL_SCHEMA.md) for full details.

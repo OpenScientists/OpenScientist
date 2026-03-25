@@ -28,4 +28,4 @@ jobs:
             exit 0
           fi
           echo "Validating: $CHANGED"
-          python tools/validate.py $CHANGED
+          python utils/tools/validate.py $CHANGED

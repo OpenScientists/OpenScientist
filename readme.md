@@ -25,7 +25,7 @@
 
 <p align="center">
   <a href="https://hhhhhejia.github.io/OpenScientist/">
-    <img src="https://raw.githubusercontent.com/HHHHHejia/OpenScientist/main/assets/knowledge-tree-v2.png" alt="Knowledge Tree" width="100%">
+    <img src="https://raw.githubusercontent.com/HHHHHejia/OpenScientist/main/utils/assets/knowledge-tree-v2.png" alt="Knowledge Tree" width="100%">
   </a>
 </p>
 
@@ -100,13 +100,13 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 | `reviewed` | Approved by a domain expert maintainer |
 | `verified` | Tested in real AI-scientist workflows  |
 
-Every pull request touching a skill file triggers CI (`tools/validate.py`) that checks required fields and section structure. A PR cannot be merged if validation fails.
+Every pull request touching a skill file triggers CI (`utils/tools/validate.py`) that checks required fields and section structure. A PR cannot be merged if validation fails.
 
 ---
 
 <h2 align="center">3. How to Contribute</h2>
 
-We welcome contributions from domain experts. See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
+We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRIBUTING.md) for the full guide.
 
 ### 3.1 Contributor Requirements
 
@@ -126,13 +126,13 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](CONTRIBUTING
 - **Fill in every section** — Purpose, Domain Knowledge, Reasoning Protocol, Tools, Common Pitfalls
 - **Validate locally** (optional but recommended):
   ```bash
-  python tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
+  python utils/tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
   ```
 - **Open a pull request** — title format: `[physics/quantum-physics] Add quantum-entanglement skill`
 
-A domain maintainer listed in [CODEOWNERS](CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
+A domain maintainer listed in [CODEOWNERS](.github/CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
 
-**Don't see your field?** You can propose a new subdomain or top-level domain — see [CONTRIBUTING.md § Propose a New Area](CONTRIBUTING.md#3-propose-a-new-area).
+**Don't see your field?** You can propose a new subdomain or top-level domain — see [CONTRIBUTING.md § Propose a New Area](utils/CONTRIBUTING.md#3-propose-a-new-area).
 
 ---
 
@@ -159,18 +159,17 @@ Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy).
 
 ### 5.1 Domain ownership
 
-Each `skills/<domain>/` folder is owned by a domain expert maintainer, defined in [CODEOWNERS](CODEOWNERS). When a PR touches that folder, GitHub automatically requests their review.
+Each `skills/<domain>/` folder is owned by a domain expert maintainer, defined in [CODEOWNERS](.github/CODEOWNERS). When a PR touches that folder, GitHub automatically requests their review.
 
 ### 5.2 Updating the skills index
 
 ```bash
-python tools/build_index.py   # writes SKILLS_INDEX.md
-git add SKILLS_INDEX.md && git commit -m "chore: update skills index"
+python utils/tools/build_index.py   # writes utils/SKILLS_INDEX.md
 ```
 
 ### 5.3 Onboarding a new domain expert
 
-Edit [CODEOWNERS](CODEOWNERS) and replace the placeholder with their GitHub handle:
+Edit [CODEOWNERS](.github/CODEOWNERS) and replace the placeholder with their GitHub handle:
 
 ```
 skills/physics/    @their-github-handle
@@ -261,13 +260,13 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 | `reviewed` | 已由领域专家审核通过           |
 | `verified` | 已在真实 AI 科学家工作流中验证 |
 
-每次 PR 修改 Skill 文件时，CI 会自动运行 `tools/validate.py` 检查必填字段和章节结构。校验不通过则无法合并。
+每次 PR 修改 Skill 文件时，CI 会自动运行 `utils/tools/validate.py` 检查必填字段和章节结构。校验不通过则无法合并。
 
 ---
 
 <h2 align="center">3. 如何贡献</h2>
 
-我们欢迎各领域专家贡献知识。请参阅 [CONTRIBUTING.md](CONTRIBUTING.md) 了解完整流程。
+我们欢迎各领域专家贡献知识。请参阅 [CONTRIBUTING.md](utils/CONTRIBUTING.md) 了解完整流程。
 
 ### 3.1 贡献者要求
 
@@ -287,13 +286,13 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 - **填写每个章节** —— Purpose、Domain Knowledge、Reasoning Protocol、Tools、Common Pitfalls
 - **本地验证**（推荐）：
   ```bash
-  python tools/validate.py skills/<领域>/<子领域>/<你的skill名称>.md
+  python utils/tools/validate.py skills/<领域>/<子领域>/<你的skill名称>.md
   ```
 - **提交 Pull Request** —— 标题格式：`[physics/quantum-physics] Add quantum-entanglement skill`
 
-[CODEOWNERS](CODEOWNERS) 中的领域维护者会自动收到 review 请求，负责审核科学内容的准确性。
+[CODEOWNERS](.github/CODEOWNERS) 中的领域维护者会自动收到 review 请求，负责审核科学内容的准确性。
 
-**没有你的研究方向？** 可以提议新的子领域或顶层领域 —— 参阅 [CONTRIBUTING.md § 提议新领域或子领域](CONTRIBUTING.md#3-提议新领域或子领域)。
+**没有你的研究方向？** 可以提议新的子领域或顶层领域 —— 参阅 [CONTRIBUTING.md § 提议新领域或子领域](utils/CONTRIBUTING.md#3-提议新领域或子领域)。
 
 ---
 
@@ -320,18 +319,17 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 
 ### 5.1 领域归属
 
-每个 `skills/<domain>/` 文件夹由一位领域专家维护者负责，定义在 [CODEOWNERS](CODEOWNERS) 中。当 PR 涉及该文件夹时，GitHub 会自动请求其 review。
+每个 `skills/<domain>/` 文件夹由一位领域专家维护者负责，定义在 [CODEOWNERS](.github/CODEOWNERS) 中。当 PR 涉及该文件夹时，GitHub 会自动请求其 review。
 
 ### 5.2 更新 Skills 索引
 
 ```bash
-python tools/build_index.py   # 生成 SKILLS_INDEX.md
-git add SKILLS_INDEX.md && git commit -m "chore: update skills index"
+python utils/tools/build_index.py   # 生成 utils/SKILLS_INDEX.md
 ```
 
 ### 5.3 添加新的领域专家
 
-编辑 [CODEOWNERS](CODEOWNERS)，将占位符替换为其 GitHub 用户名：
+编辑 [CODEOWNERS](.github/CODEOWNERS)，将占位符替换为其 GitHub 用户名：
 
 ```
 skills/physics/    @their-github-handle

@@ -10,7 +10,7 @@ Usage:
 import re
 from pathlib import Path
 
-REPO_ROOT = Path(__file__).parent.parent
+REPO_ROOT = Path(__file__).parent.parent.parent
 SKILLS_DIR = REPO_ROOT / "skills"
 README = REPO_ROOT / "readme.md"
 

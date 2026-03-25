@@ -41,7 +41,7 @@ Required frontmatter fields:
 ### 2.4 Validate locally (optional but recommended)
 
 ```bash
-python tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
+python utils/tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
 ```
 
 ### 2.5 Open a Pull Request
@@ -50,7 +50,7 @@ python tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
 - Title format: `[<domain>/<subdomain>] Add <skill-name> skill`
 - The PR template will prompt you for a checklist
 
-A domain maintainer listed in [CODEOWNERS](CODEOWNERS) will review your submission for scientific accuracy.
+A domain maintainer listed in [CODEOWNERS](../.github/CODEOWNERS) will review your submission for scientific accuracy.
 
 ---
 
@@ -157,7 +157,7 @@ cp skills/_template.md skills/<领域>/<子领域>/<你的skill名称>.md
 ### 2.4 本地验证（推荐）
 
 ```bash
-python tools/validate.py skills/<领域>/<子领域>/<你的skill名称>.md
+python utils/tools/validate.py skills/<领域>/<子领域>/<你的skill名称>.md
 ```
 
 ### 2.5 提交 Pull Request
@@ -166,7 +166,7 @@ python tools/validate.py skills/<领域>/<子领域>/<你的skill名称>.md
 - 标题格式：`[<领域>/<子领域>] Add <skill名称> skill`
 - PR 模板会提示你完成检查清单
 
-[CODEOWNERS](CODEOWNERS) 中列出的领域维护者将审核你的提交。
+[CODEOWNERS](../.github/CODEOWNERS) 中列出的领域维护者将审核你的提交。
 
 ---
 

@@ -20,8 +20,8 @@ reviewed_by: []
   1. Delete these comment blocks before submitting.
   2. Fill in ALL required frontmatter fields above.
   3. Complete each section below. "Required" sections must be present.
-  4. Run `python tools/validate.py skills/<domain>/<subdomain>/<your-file>.md` before opening a PR.
-  5. See SKILL_SCHEMA.md for full field documentation.
+  4. Run `python utils/tools/validate.py skills/<domain>/<subdomain>/<your-file>.md` before opening a PR.
+  5. See utils/SKILL_SCHEMA.md for full field documentation.
 -->
 
 ## Purpose
