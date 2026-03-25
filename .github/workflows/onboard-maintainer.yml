@@ -198,53 +198,42 @@ jobs:
             }
             maintainerObj += ' }';
 
-            // Escape the subdomain name for use in regex
-            const escapedName = subdomainDisplay.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const lines = content.split('\n');
+            let modified = false;
 
-            // Check if this subdomain node already has a maintainer field
-            const withMaintainerRegex = new RegExp(
-              `(\\{ name: "${escapedName}",.*?)maintainer: \\{[^}]*\\}`,
-              'g'
-            );
+            for (let i = 0; i < lines.length; i++) {
+              if (lines[i].includes(`name: "${subdomainDisplay}"`) && !modified) {
+                const line = lines[i];
 
-            if (withMaintainerRegex.test(content)) {
-              // Update existing structured maintainer
-              content = content.replace(withMaintainerRegex, `$1maintainer: ${maintainerObj}`);
-              console.log(`Updated existing maintainer for "${subdomainDisplay}"`);
-            } else {
-              // No maintainer field yet — add it
-              const lines = content.split('\n');
-              let modified = false;
+                // Skip if this reviewer already exists on this node
+                if (line.includes(`github: "${username}"`)) {
+                  console.log(`Reviewer @${username} already exists on "${subdomainDisplay}", skipping`);
+                  modified = true;
+                  break;
+                }
 
-              for (let i = 0; i < lines.length; i++) {
-                if (lines[i].includes(`name: "${subdomainDisplay}"`) && !modified) {
-                  const line = lines[i];
-
-                  if (line.includes('children:')) {
-                    // Parent node: insert maintainer before ", children:"
-                    lines[i] = line.replace(
-                      /, children:/,
-                      `, maintainer: ${maintainerObj}, children:`
-                    );
-                    modified = true;
-                  } else if (line.match(/\}\s*,?\s*$/)) {
-                    // Leaf node: insert maintainer before closing }
-                    lines[i] = line.replace(
-                      /(\s*)\}\s*(,?)\s*$/,
-                      `, maintainer: ${maintainerObj} $1}$2`
-                    );
-                    lines[i] = lines[i].replace(/\s+\}/, ' }');
-                    modified = true;
-                  }
+                if (line.includes('maintainer: [')) {
+                  // Maintainer array exists — append to it
+                  lines[i] = line.replace(/maintainer: \[/, `maintainer: [${maintainerObj}, `);
+                  modified = true;
+                } else if (line.includes('children:')) {
+                  // Parent node, no maintainer yet — add array before children
+                  lines[i] = line.replace(/, children:/, `, maintainer: [${maintainerObj}], children:`);
+                  modified = true;
+                } else if (line.match(/\}\s*,?\s*$/)) {
+                  // Leaf node, no maintainer yet — add array before closing }
+                  lines[i] = line.replace(/(\s*)\}\s*(,?)\s*$/, `, maintainer: [${maintainerObj}] $1}$2`);
+                  lines[i] = lines[i].replace(/\s+\}/, ' }');
+                  modified = true;
                 }
               }
+            }
 
-              if (modified) {
-                content = lines.join('\n');
-                console.log(`Added maintainer for "${subdomainDisplay}"`);
-              } else {
-                console.log(`WARNING: Could not find node for "${subdomainDisplay}" in index.html`);
-              }
+            if (modified) {
+              content = lines.join('\n');
+              console.log(`Added maintainer for "${subdomainDisplay}"`);
+            } else {
+              console.log(`WARNING: Could not find node for "${subdomainDisplay}" in index.html`);
             }
 
             fs.writeFileSync(filePath, content);
