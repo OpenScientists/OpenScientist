@@ -709,7 +709,7 @@ function buildSubdomainPanel(domain, color) {
     if (sub.code) {
       var cd = document.createElement('span');
       cd.className = 'sub-code';
-      cd.textContent = sub.code;
+      cd.textContent = '(' + sub.code + ')';
       item.appendChild(cd);
     }
 
@@ -762,7 +762,7 @@ function buildSubdomainPanel(domain, color) {
 
         var arr = document.createElement('span'); arr.className = 'sg-arrow'; arr.textContent = '\u25b6'; hdr.appendChild(arr);
         var hn = document.createElement('span'); hn.textContent = sub.name; hdr.appendChild(hn);
-        if (sub.code) { var hc = document.createElement('span'); hc.className = 'sg-code'; hc.textContent = sub.code; hdr.appendChild(hc); }
+        if (sub.code) { var hc = document.createElement('span'); hc.className = 'sg-code'; hc.textContent = '(' + sub.code + ')'; hdr.appendChild(hc); }
         var cnt = document.createElement('span'); cnt.className = 'sg-count'; cnt.textContent = sub.children.length; hdr.appendChild(cnt);
 
         var kids = document.createElement('div');
