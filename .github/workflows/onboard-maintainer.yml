@@ -51,7 +51,8 @@ jobs:
             }
 
             const englishName = extractField('English Name');
-            const chineseName = extractField('Chinese Name');
+            const chineseNameRaw = extractField('Chinese Name');
+            const chineseName = (chineseNameRaw && chineseNameRaw !== '_No response_') ? chineseNameRaw : englishName;
             const githubUsername = extractField('GitHub Username');
             const affiliation = extractField('Affiliation');
             const shortAffiliation = extractField('Short Affiliation');

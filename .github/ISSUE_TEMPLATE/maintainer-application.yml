@@ -22,10 +22,10 @@ body:
     id: chinese_name
     attributes:
       label: Chinese Name
-      description: Your full name in Chinese
+      description: Your full name in Chinese (optional, leave blank if not applicable)
       placeholder: "e.g. 阿尔伯特·爱因斯坦"
     validations:
-      required: true
+      required: false
 
   - type: input
     id: github_username
