@@ -2,9 +2,9 @@
 
 This folder contains Claude Code Skills for the **Electrical Engineering and Systems Science** domain (arXiv: eess).
 
-## Maintainer
+## Reviewer
 
-*Seeking domain maintainer — open an issue if you are an EESS expert interested in contributing.*
+*Seeking domain reviewer — open an issue if you are an EESS expert interested in contributing.*
 
 ## Skills in This Domain
 

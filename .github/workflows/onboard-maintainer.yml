@@ -1,4 +1,4 @@
-name: Onboard Maintainer
+name: Onboard Reviewer
 
 on:
   issues:
@@ -151,7 +151,7 @@ jobs:
         run: |
           NEW_ROW="| ${EMOJI} ${DOMAIN} | ${SUBDOMAIN} | ${ENGLISH_NAME} [@${USERNAME}](https:\/\/github.com\/${USERNAME}) | ${AFFILIATION} |"
           sed -i "/^> Want to maintain a subdomain/i\\${NEW_ROW}" readme.md
-          echo "Updated English maintainer table"
+          echo "Updated English reviewer table"
 
       - name: Update readme.md Chinese table
         env:
@@ -164,7 +164,7 @@ jobs:
         run: |
           NEW_ROW="| ${EMOJI} ${DOMAIN} | ${SUBDOMAIN} | ${CHINESE_NAME} [@${USERNAME}](https:\/\/github.com\/${USERNAME}) | ${AFFILIATION} |"
           sed -i "/^> 想认领一个子领域/i\\${NEW_ROW}" readme.md
-          echo "Updated Chinese maintainer table"
+          echo "Updated Chinese reviewer table"
 
       - name: Update docs/index.html
         uses: actions/github-script@v7
@@ -247,7 +247,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .github/CODEOWNERS readme.md docs/index.html
-          git commit -m "chore: onboard @${USERNAME} as ${DOMAIN_FOLDER}/${SUBDOMAIN_FOLDER} maintainer"
+          git commit -m "chore: onboard @${USERNAME} as ${DOMAIN_FOLDER}/${SUBDOMAIN_FOLDER} reviewer"
           git push
 
       - name: Close issue with comment
@@ -269,11 +269,11 @@ jobs:
               body: [
                 `Welcome aboard, @${username}!`,
                 ``,
-                `You have been onboarded as the **${domain} / ${subdomain}** maintainer.`,
+                `You have been onboarded as the **${domain} / ${subdomain}** reviewer.`,
                 ``,
                 `**What was updated:**`,
                 `- \`.github/CODEOWNERS\` — PRs touching your subdomain will now request your review`,
-                `- \`readme.md\` — your name appears in both the English and Chinese maintainer tables`,
+                `- \`readme.md\` — your name appears in both the English and Chinese reviewer tables`,
                 `- \`docs/index.html\` — your name appears on the interactive knowledge tree`,
                 ``,
                 `**Next step:** Please check your GitHub notifications and **accept the collaborator invitation** for this repository so you can review and approve PRs.`,

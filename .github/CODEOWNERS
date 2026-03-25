@@ -6,19 +6,19 @@
 # Core team owns root-level files
 *                              @HHHHHejia
 
-# Domain maintainers (arXiv-aligned) — fill in as experts are onboarded
-skills/physics/                @HHHHHejia   # TODO: replace with physics maintainer
+# Domain reviewers (arXiv-aligned) — fill in as experts are onboarded
+skills/physics/                @HHHHHejia   # TODO: replace with physics reviewer
 skills/physics/space-physics/  @huangzesen @HHHHHejia
 skills/physics/atmospheric-and-oceanic-physics/  @ktwu01 @HHHHHejia
 skills/physics/chemical-physics/  @Alexandrina-Chen @HHHHHejia
-skills/mathematics/            @HHHHHejia   # TODO: replace with math maintainer
-skills/computer-science/       @HHHHHejia   # TODO: replace with CS maintainer
+skills/mathematics/            @HHHHHejia   # TODO: replace with math reviewer
+skills/computer-science/       @HHHHHejia   # TODO: replace with CS reviewer
 skills/computer-science/artificial-intelligence/  @Zhangyanbo @HHHHHejia
 skills/computer-science/hardware-architecture/  @Zhichenzzz @HHHHHejia
 skills/computer-science/multiagent-systems/  @suqisheng @HHHHHejia
 skills/computer-science/cryptography-and-security/  @xhyumiracle @HHHHHejia
-skills/quantitative-biology/   @HHHHHejia   # TODO: replace with q-bio maintainer
-skills/statistics/             @HHHHHejia   # TODO: replace with statistics maintainer
-skills/eess/                   @HHHHHejia   # TODO: replace with EESS maintainer
-skills/economics/              @HHHHHejia   # TODO: replace with economics maintainer
-skills/quantitative-finance/   @HHHHHejia   # TODO: replace with q-fin maintainer
+skills/quantitative-biology/   @HHHHHejia   # TODO: replace with q-bio reviewer
+skills/statistics/             @HHHHHejia   # TODO: replace with statistics reviewer
+skills/eess/                   @HHHHHejia   # TODO: replace with EESS reviewer
+skills/economics/              @HHHHHejia   # TODO: replace with economics reviewer
+skills/quantitative-finance/   @HHHHHejia   # TODO: replace with q-fin reviewer

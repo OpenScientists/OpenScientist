@@ -2,9 +2,9 @@
 
 This folder contains Claude Code Skills for the **Economics** domain (arXiv: econ).
 
-## Maintainer
+## Reviewer
 
-*Seeking domain maintainer — open an issue if you are an Economics expert interested in contributing.*
+*Seeking domain reviewer — open an issue if you are an Economics expert interested in contributing.*
 
 ## Skills in This Domain
 

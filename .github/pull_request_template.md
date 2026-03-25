@@ -18,4 +18,4 @@
 <!-- Brief description of what this skill covers and why it's valuable -->
 
 ### Notes for reviewer
-<!-- Anything the domain maintainer should pay special attention to -->
+<!-- Anything the domain reviewer should pay special attention to -->

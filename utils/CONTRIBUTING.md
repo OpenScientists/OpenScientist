@@ -50,7 +50,7 @@ python utils/tools/validate.py skills/<domain>/<subdomain>/<your-skill-name>.md
 - Title format: `[<domain>/<subdomain>] Add <skill-name> skill`
 - The PR template will prompt you for a checklist
 
-A domain maintainer listed in [CODEOWNERS](../.github/CODEOWNERS) will review your submission for scientific accuracy.
+A domain reviewer listed in [CODEOWNERS](../.github/CODEOWNERS) will review your submission for scientific accuracy.
 
 ---
 
@@ -74,14 +74,14 @@ A new top-level domain requires broader consensus. Open a **GitHub Issue** first
 1. [Open an issue](https://github.com/HHHHHejia/OpenScientist/issues/new?template=propose-new-area.md) with the *Propose New Area* template
 2. Describe the domain, why it belongs here, and who will maintain it
 3. Once the core team approves (label: `area: accepted`), submit a PR that includes:
-   - `skills/<new-domain>/README.md` — domain overview and maintainer info
+   - `skills/<new-domain>/README.md` — domain overview and reviewer info
    - At least one initial skill file
    - An updated `CODEOWNERS` entry for the new folder
 
 ### 3.3 What makes a good area proposal?
 
 - Clear scope: skills in this area are distinct and non-overlapping with existing domains
-- An identified expert willing to serve as maintainer
+- An identified expert willing to serve as reviewer
 - At least 3–5 skills that could realistically be contributed
 
 ---
@@ -91,10 +91,10 @@ A new top-level domain requires broader consensus. Open a **GitHub Issue** first
 | Stage | Who | What they check |
 |---|---|---|
 | CI (automated) | GitHub Actions | Frontmatter schema validity |
-| Domain review | Domain maintainer | Scientific accuracy, completeness |
-| Merge | Domain maintainer | Approve + merge |
+| Domain review | Domain reviewer | Scientific accuracy, completeness |
+| Merge | Domain reviewer | Approve + merge |
 
-After merge, `status` starts as `draft`. It becomes `reviewed` once a maintainer signs off, and `verified` after real-world testing.
+After merge, `status` starts as `draft`. It becomes `reviewed` once a reviewer signs off, and `verified` after real-world testing.
 
 ---
 

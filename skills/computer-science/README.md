@@ -2,9 +2,9 @@
 
 This folder contains Claude Code Skills for the **Computer Science** domain.
 
-## Maintainer
+## Reviewer
 
-*Seeking domain maintainer — open an issue if you are a Computer Science expert interested in contributing.*
+*Seeking domain reviewer — open an issue if you are a Computer Science expert interested in contributing.*
 
 ## Skills in This Domain
 

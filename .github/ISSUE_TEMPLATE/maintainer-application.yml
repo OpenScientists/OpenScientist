@@ -1,12 +1,12 @@
-name: Maintainer Application
-description: Apply to become a subdomain maintainer for OpenScientist
-title: "Maintainer Application: [subdomain]"
+name: Reviewer Application
+description: Apply to become a subdomain reviewer for OpenScientist
+title: "Reviewer Application: [subdomain]"
 labels: ["maintainer-application"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for your interest in becoming a subdomain maintainer! Please fill out all fields below.
+        Thanks for your interest in becoming a subdomain reviewer! Please fill out all fields below.
         A repo admin will review your application and, once approved, you'll be onboarded automatically.
 
   - type: input

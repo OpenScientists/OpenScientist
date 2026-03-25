@@ -29,10 +29,10 @@ assignees: HHHHHejia
 
 <!-- Does this overlap with any existing domain? If so, why should it be separate? -->
 
-## Proposed maintainer
+## Proposed reviewer
 
 <!-- Who will review PRs for this domain? Provide their GitHub handle and affiliation.
-     A new top-level domain requires a committed maintainer before it can be accepted. -->
+     A new top-level domain requires a committed reviewer before it can be accepted. -->
 
 - Name:
 - GitHub:

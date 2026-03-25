@@ -97,7 +97,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 | Status     | Meaning                                |
 | ------------ | ---------------------------------------- |
 | `draft`    | Authored, not yet peer-reviewed        |
-| `reviewed` | Approved by a domain expert maintainer |
+| `reviewed` | Approved by a domain expert reviewer |
 | `verified` | Tested in real AI-scientist workflows  |
 
 Every pull request touching a skill file triggers CI (`utils/tools/validate.py`) that checks required fields and section structure. A PR cannot be merged if validation fails.
@@ -130,7 +130,7 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRI
   ```
 - **Open a pull request** — title format: `[physics/quantum-physics] Add quantum-entanglement skill`
 
-A domain maintainer listed in [CODEOWNERS](.github/CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
+A domain reviewer listed in [CODEOWNERS](.github/CODEOWNERS) will be automatically assigned to review your PR for scientific accuracy.
 
 **Don't see your field?** You can propose a new subdomain or top-level domain — see [CONTRIBUTING.md § Propose a New Area](utils/CONTRIBUTING.md#3-propose-a-new-area).
 
@@ -140,16 +140,16 @@ A domain maintainer listed in [CODEOWNERS](.github/CODEOWNERS) will be automatic
 
 Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy). 8 domains, 155 subcategories.
 
-| Domain | arXiv | Subcategories | Maintainer(s) |
+| Domain | arXiv | Subcategories | Reviewer(s) |
 |---|---|---|---|
-| ⚛️ Physics | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51 | *Seeking maintainer* |
-| ➗ Mathematics | math | 32 | *Seeking maintainer* |
-| 💻 Computer Science | cs | 40 | *Seeking maintainer* |
-| 🧬 Quantitative Biology | q-bio | 10 | *Seeking maintainer* |
-| 📊 Statistics | stat | 6 | *Seeking maintainer* |
-| ⚡ Electrical Engineering & Systems Science | eess | 4 | *Seeking maintainer* |
-| 📈 Economics | econ | 3 | *Seeking maintainer* |
-| 💹 Quantitative Finance | q-fin | 9 | *Seeking maintainer* |
+| ⚛️ Physics | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51 | *Seeking reviewer* |
+| ➗ Mathematics | math | 32 | *Seeking reviewer* |
+| 💻 Computer Science | cs | 40 | *Seeking reviewer* |
+| 🧬 Quantitative Biology | q-bio | 10 | *Seeking reviewer* |
+| 📊 Statistics | stat | 6 | *Seeking reviewer* |
+| ⚡ Electrical Engineering & Systems Science | eess | 4 | *Seeking reviewer* |
+| 📈 Economics | econ | 3 | *Seeking reviewer* |
+| 💹 Quantitative Finance | q-fin | 9 | *Seeking reviewer* |
 
 > [View all 155 subcategories in the interactive knowledge tree →](https://hhhhhejia.github.io/OpenScientist/)
 
@@ -159,7 +159,7 @@ Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy).
 
 ### 5.1 Domain ownership
 
-Each `skills/<domain>/` folder is owned by a domain expert maintainer, defined in [CODEOWNERS](.github/CODEOWNERS). When a PR touches that folder, GitHub automatically requests their review.
+Each `skills/<domain>/` folder is owned by a domain expert reviewer, defined in [CODEOWNERS](.github/CODEOWNERS). When a PR touches that folder, GitHub automatically requests their review.
 
 ### 5.2 Updating the skills index
 
@@ -177,14 +177,20 @@ skills/physics/    @their-github-handle
 
 ### 5.4 Promoting a skill's status
 
-- `draft` → `reviewed` (maintainer approves)
+- `draft` → `reviewed` (reviewer approves)
 - `reviewed` → `verified` (tested in a real workflow)
 
 ---
 
-<h2 align="center">6. Maintainers</h2>
+<h2 align="center">6. Reviewers</h2>
 
-| Domain | Subdomain | Maintainer | Affiliation |
+Reviewers are domain experts responsible for ensuring the scientific quality of skills in their subdomain.
+
+- **Review PRs** — approve or request changes on skill submissions in your subdomain
+- **Self-approve** — reviewers may approve their own PRs within their subdomain
+- **Promote status** — upgrade a skill from `draft` to `reviewed` after verification
+
+| Domain | Subdomain | Reviewer | Affiliation |
 |---|---|---|---|
 | ⚛️ Physics | Space Physics | Zesen Huang [@huangzesen](https://github.com/huangzesen) | UCLA Postdoc |
 | ⚛️ Physics | Atmospheric and Oceanic Physics | Koutian Wu [@ktwu01](https://github.com/ktwu01) | UT Austin PhD Student |
@@ -194,7 +200,7 @@ skills/physics/    @their-github-handle
 | 💻 Computer Science | Multiagent Systems | Qisheng Su [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
 | 💻 Computer Science | Cryptography and Security | Xiaohang Yu [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
 
-> Want to maintain a subdomain? [**Apply here →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
+> Want to become a reviewer? [**Apply here →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
 
 ---
 
@@ -306,7 +312,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
   ```
 - **提交 Pull Request** —— 标题格式：`[physics/quantum-physics] Add quantum-entanglement skill`
 
-[CODEOWNERS](.github/CODEOWNERS) 中的领域维护者会自动收到 review 请求，负责审核科学内容的准确性。
+[CODEOWNERS](.github/CODEOWNERS) 中的领域审稿人会自动收到 review 请求，负责审核科学内容的准确性。
 
 **没有你的研究方向？** 可以提议新的子领域或顶层领域 —— 参阅 [CONTRIBUTING.md § 提议新领域或子领域](utils/CONTRIBUTING.md#3-提议新领域或子领域)。
 
@@ -316,7 +322,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 
 对齐 [arXiv 分类体系](https://arxiv.org/category_taxonomy)。8 个顶层领域，155 个子领域。
 
-| 领域 | arXiv | 子领域数 | 维护者 |
+| 领域 | arXiv | 子领域数 | 审稿人 |
 |---|---|---|---|
 | ⚛️ Physics 物理 | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51 | *招募中* |
 | ➗ Mathematics 数学 | math | 32 | *招募中* |
@@ -335,7 +341,7 @@ cp OpenScientist/skills/physics/quantum-physics/quantum-entanglement.md ~/.claud
 
 ### 5.1 领域归属
 
-每个 `skills/<domain>/` 文件夹由一位领域专家维护者负责，定义在 [CODEOWNERS](.github/CODEOWNERS) 中。当 PR 涉及该文件夹时，GitHub 会自动请求其 review。
+每个 `skills/<domain>/` 文件夹由一位领域审稿人负责，定义在 [CODEOWNERS](.github/CODEOWNERS) 中。当 PR 涉及该文件夹时，GitHub 会自动请求其 review。
 
 ### 5.2 更新 Skills 索引
 
@@ -353,14 +359,20 @@ skills/physics/    @their-github-handle
 
 ### 5.4 提升 Skill 状态
 
-- `draft` → `reviewed`（维护者审核通过）
+- `draft` → `reviewed`（审稿人审核通过）
 - `reviewed` → `verified`（在真实工作流中验证）
 
 ---
 
-<h2 align="center">6. 维护者</h2>
+<h2 align="center">6. 审稿人</h2>
 
-| 领域 | 子领域 | 维护者 | 机构 |
+审稿人是负责其子领域 Skill 科学质量的领域专家。
+
+- **审核 PR** — 对所属子领域的 Skill 提交进行审批或提出修改意见
+- **自审自批** — 审稿人在自己的子领域内可以审核并合并自己的 PR
+- **提升状态** — 验证后将 Skill 从 `draft` 升级为 `reviewed`
+
+| 领域 | 子领域 | 审稿人 | 机构 |
 |---|---|---|---|
 | ⚛️ Physics | Space Physics | 黄泽森 [@huangzesen](https://github.com/huangzesen) | UCLA Postdoc |
 | ⚛️ Physics | Atmospheric and Oceanic Physics | 吴叩天 [@ktwu01](https://github.com/ktwu01) | UT Austin PhD Student |
@@ -370,6 +382,6 @@ skills/physics/    @their-github-handle
 | 💻 Computer Science | Multiagent Systems | 苏启晟 [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
 | 💻 Computer Science | Cryptography and Security | 余晓航 [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
 
-> 想认领一个子领域？[**点击申请 →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
+> 想成为审稿人？[**点击申请 →**](https://github.com/HHHHHejia/OpenScientist/issues/new?template=maintainer-application.yml)
 
 </details>

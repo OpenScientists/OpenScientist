@@ -2,9 +2,9 @@
 
 This folder contains Claude Code Skills for the **Quantitative Finance** domain (arXiv: q-fin).
 
-## Maintainer
+## Reviewer
 
-*Seeking domain maintainer — open an issue if you are a Quantitative Finance expert interested in contributing.*
+*Seeking domain reviewer — open an issue if you are a Quantitative Finance expert interested in contributing.*
 
 ## Skills in This Domain
 

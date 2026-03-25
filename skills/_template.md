@@ -10,7 +10,7 @@ expertise_level: advanced                    # beginner | intermediate | advance
 tags: []                                     # optional: [keyword1, keyword2, ...]
 dependencies: []                             # optional: names of other skills this builds on
 version: 1.0.0
-status: draft                                # leave as draft; maintainer will update after review
+status: draft                                # leave as draft; reviewer will update after review
 reviewed_by: []
 ---
 
