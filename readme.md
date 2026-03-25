@@ -33,37 +33,19 @@
 
 </div>
 
-<details open>
-<summary><strong>What is it</strong></summary>
+| | |
+|---|---|
+| **What is it** | A curated library of **Claude Code Skills** — structured Markdown files that give AI agents deep, expert-level reasoning capabilities in specific scientific domains. |
+| **How it works** | Each skill is written by a domain expert and encodes the knowledge, tools, reasoning protocols, and common pitfalls of their field. Point your AI agent at a skill, and it reasons like a domain expert. |
+| **What can you do** | Contribute your expertise, or use this repo to supercharge your AI agent's scientific discovery. |
 
-OpenScientist is a curated library of **Claude Code Skills** — structured Markdown files that give AI agents deep, expert-level reasoning capabilities in specific scientific domains.
-
-</details>
-
-<details open>
-<summary><strong>How it works</strong></summary>
-
-Each skill is written by a domain expert and encodes the knowledge, tools, reasoning protocols, and common pitfalls of their field. Point your AI agent at a skill, and it reasons like a domain expert.
-
-</details>
-
-<details open>
-<summary><strong>What can you do?</strong></summary>
-
-Contribute your expertise, or use this repo to supercharge your AI agent's scientific discovery.
-
-</details>
-
-<details open>
-<summary><strong>Why should you contribute?</strong></summary>
+### Why should you contribute?
 
 Turning your know-how into AI-reusable knowledge means:
 
 1. **Boost your own research efficiency** — your AI agent gains your expertise and works alongside you
 2. **Boost humanity's research efficiency** — every scientist benefits from the collective knowledge
 3. **Survive the Singularity** — when ASI takes over, your contribution to this repo might just save your life
-
-</details>
 
 ---
 
