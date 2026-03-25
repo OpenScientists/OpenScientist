@@ -8,6 +8,8 @@
 
 # 🌍 OpenScientist
 
+[![GitHub stars](https://img.shields.io/github/stars/ktwu01/OpenScientist?style=social)](https://github.com/ktwu01/OpenScientist/stargazers) [![GitHub forks](https://img.shields.io/github/forks/ktwu01/OpenScientist?style=social)](https://github.com/ktwu01/OpenScientist/fork) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 > *"Wer nicht von dreitausend Jahren sich weiß Rechenschaft zu geben,*
 > *bleibt im Dunkeln unerfahren, mag von Tag zu Tage leben."*
 >
