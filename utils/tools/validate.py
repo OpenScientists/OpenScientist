@@ -39,9 +39,41 @@ REQUIRED_SECTIONS = [
 
 SEMVER_RE = re.compile(r"^\d+\.\d+\.\d+$")
 
+REPO_ROOT = Path(__file__).resolve().parent.parent.parent
+SKILLS_DIR = REPO_ROOT / "skills"
+
+
+def validate_path(path: Path) -> list[str]:
+    """Validate that the skill file is in a correct skills/<domain>/<subdomain>/ directory."""
+    errors = []
+    try:
+        rel = path.resolve().relative_to(SKILLS_DIR)
+    except ValueError:
+        errors.append(f"File is not under skills/ directory")
+        return errors
+
+    parts = rel.parts  # e.g. ('physics', 'quantum-physics', 'my-skill.md')
+    if len(parts) < 3:
+        errors.append(f"File must be in skills/<domain>/<subdomain>/, got: skills/{'/'.join(parts)}")
+        return errors
+
+    domain, subdomain = parts[0], parts[1]
+    if domain not in VALID_DOMAINS:
+        errors.append(f"Invalid domain folder '{domain}'. Must be one of: {sorted(VALID_DOMAINS)}")
+
+    subdomain_dir = SKILLS_DIR / domain / subdomain
+    if not subdomain_dir.is_dir():
+        errors.append(f"Subdomain folder 'skills/{domain}/{subdomain}/' does not exist")
+
+    return errors
+
 
 def validate_file(path: Path) -> list[str]:
     errors = []
+
+    # Validate file path structure
+    errors.extend(validate_path(path))
+
     text = path.read_text(encoding="utf-8")
 
     # Extract YAML frontmatter

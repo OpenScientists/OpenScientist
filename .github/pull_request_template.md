@@ -1,6 +1,6 @@
 ## Skill Submission Checklist
 
-**Domain:** <!-- e.g. physics / biology / chemistry -->
+**Domain:** <!-- e.g. physics / quantum-physics -->
 **Skill name:** <!-- value of the `name` frontmatter field -->
 
 ### Before submitting, confirm:
