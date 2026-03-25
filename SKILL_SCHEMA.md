@@ -23,7 +23,7 @@ name: <string>                  # REQUIRED. Unique identifier. Lowercase, hyphen
 description: <string>           # REQUIRED. 1-2 sentences. When should this skill be invoked? What does it do?
 domain: <string>                # REQUIRED. One of: physics | biology | chemistry | mathematics | neuroscience | computer-science
 subdomain: <string>             # optional. More specific area within the domain.
-author: <string>                # REQUIRED. "Full Name (Affiliation)" — e.g. "Dr. Jane Smith (MIT Physics)"
+author: <string>                # REQUIRED. "Full Name (Affiliation)" — e.g. "Dr. Albert Einstein (ETH Zürich Physics)"
 expertise_level: <string>       # REQUIRED. One of: beginner | intermediate | advanced
 tags: [<string>, ...]           # optional. Keywords for discovery.
 dependencies: [<string>, ...]   # optional. Names of other skills this one builds upon.
@@ -94,7 +94,7 @@ name: quantum-entanglement-analysis
 description: Guide AI to reason about quantum entanglement in experimental setups. Use when analyzing Bell inequality tests, EPR pairs, or entangled photon experiments.
 domain: physics
 subdomain: quantum-mechanics
-author: Dr. Jane Smith (MIT Physics)
+author: Dr. Albert Einstein (ETH Zürich Physics)
 expertise_level: advanced
 tags: [entanglement, Bell inequality, quantum information, EPR]
 dependencies: []

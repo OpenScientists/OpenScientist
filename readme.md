@@ -107,7 +107,7 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](CONTRIBUTING
 > **Who can contribute?** We maintain a high bar for scientific accuracy.
 
 - **Academic credential** — PhD degree or equivalent research position (postdoc, research scientist, professor, etc.) is **required**
-- **Real-name identity** — Contributors must use their real name and institutional affiliation in the `author` field (e.g., `"Dr. Jane Smith (MIT Physics)"`)
+- **Real-name identity** — Contributors must use their real name and institutional affiliation in the `author` field (e.g., `"Dr. Albert Einstein (ETH Zürich Physics)"`)
 - **Domain expertise** — You may only contribute skills within your area of professional expertise
 
 ### 3.2 Five Steps

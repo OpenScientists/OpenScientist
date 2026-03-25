@@ -5,7 +5,7 @@ description: >                               # 1-2 sentences: when should this s
   Describe what this skill does and when to invoke it.
 domain: physics                              # physics | biology | chemistry | mathematics | neuroscience | computer-science
 subdomain: ""                                # optional: more specific area
-author: "Full Name (Institution)"            # e.g. "Dr. Jane Smith (MIT Physics)"
+author: "Full Name (Institution)"            # e.g. "Dr. Albert Einstein (ETH Zürich Physics)"
 expertise_level: advanced                    # beginner | intermediate | advanced
 tags: []                                     # optional: [keyword1, keyword2, ...]
 dependencies: []                             # optional: names of other skills this builds on
