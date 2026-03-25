@@ -191,6 +191,8 @@ skills/physics/    @their-github-handle
 | ⚛️ Physics | Chemical Physics | [@Alexandrina-Chen](https://github.com/Alexandrina-Chen) | Flatiron Institute Research Fellow |
 | 💻 Computer Science | Hardware Architecture | [@Zhichenzzz](https://github.com/Zhichenzzz) | UW CS PhD Student |
 | 💻 Computer Science | Multiagent Systems | [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
+| 💻 Computer Science | Blockchain | [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
+| 💻 Computer Science | Cryptocurrency | [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
 
 > Want to maintain a subdomain? Open an issue or reach out to [@HHHHHejia](https://github.com/HHHHHejia).
 
@@ -365,6 +367,8 @@ skills/physics/    @their-github-handle
 | ⚛️ Physics | Chemical Physics | [@Alexandrina-Chen](https://github.com/Alexandrina-Chen) | Flatiron Institute Research Fellow |
 | 💻 Computer Science | Hardware Architecture | [@Zhichenzzz](https://github.com/Zhichenzzz) | UW CS PhD Student |
 | 💻 Computer Science | Multiagent Systems | [@suqisheng](https://github.com/suqisheng) | USTC PhD Student |
+| 💻 Computer Science | Blockchain | [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
+| 💻 Computer Science | Cryptocurrency | [@xhyumiracle](https://github.com/xhyumiracle) | Imperial College PhD Student |
 
 > 想认领一个子领域？提交 Issue 或联系 [@HHHHHejia](https://github.com/HHHHHejia)。
 
