@@ -403,3 +403,13 @@ skills/physics/    @their-github-handle
 - `reviewed` → `verified`（在真实工作流中验证）
 
 </details>
+
+---
+
+<div align="center">
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=HHHHHejia/OpenScientist&type=Date)](https://star-history.com/#HHHHHejia/OpenScientist&Date)
+
+</div>
