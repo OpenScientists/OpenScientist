@@ -450,6 +450,8 @@ CODEOWNERS 中的领域审稿人会自动收到 review 请求，负责审核科�
 &nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://claw4s.github.io/"><img src="utils/assets/organzier/3_ai4sci.png" alt="AI4Sci" height="80"></a>
 
+*We are looking for more organizations to collaborate. Contact us: **hejia@tapntell.ai***
+
 ---
 
 ## Sponsor
