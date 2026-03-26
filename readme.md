@@ -53,7 +53,11 @@ Each skill is written by a domain expert and encodes the knowledge, tools, reaso
 
 Contribute your expertise, or use this repo to supercharge your AI agent's scientific discovery.
 
-### 1.4 Why should you contribute?
+### 1.4 Open Source & Non-Profit
+
+OpenScientist is a fully open-source, non-profit initiative. As the project grows, we plan to establish a non-profit organization (NGO) to ensure long-term governance, transparency, and stewardship of all contributed knowledge.
+
+### 1.5 Why should you contribute?
 
 Turning your know-how into AI-reusable knowledge means:
 
@@ -259,7 +263,11 @@ OpenScientist 是一个精心策划的 **Claude Code Skills 库** —— 每个 
 
 贡献你的专业知识，或使用本仓库加速你 AI agent 的科学发现。
 
-### 1.4 为什么你应该贡献？
+### 1.4 开源与非盈利
+
+OpenScientist 是一个完全开源、非盈利的项目。随着项目的发展，我们计划成立一个非盈利组织（NGO），以确保所有贡献知识的长期治理、透明性和可持续管理。
+
+### 1.5 为什么你应该贡献？
 
 将你的 know-how 变成 AI 可复用的知识意味着：
 
