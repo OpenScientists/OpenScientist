@@ -58,7 +58,7 @@ jobs:
             const affiliation = extractField('Affiliation');
             const shortAffiliation = extractField('Short Affiliation');
             const role = extractField('Role');
-            const homepage = extractField('Homepage');
+            let homepage = extractField('Homepage');
             const subdomainRaw = extractField('Subdomain');
 
             // Extract domain from subdomain (format: "Domain / Subdomain")
@@ -80,6 +80,11 @@ jobs:
                 core.setFailed(`Field "${label}" contains disallowed characters (backslash or double quote): ${value}`);
                 return;
               }
+            }
+
+            // Auto-prepend https:// if missing
+            if (homepage && homepage !== '_No response_' && !/^https?:\/\//.test(homepage)) {
+              homepage = 'https://' + homepage;
             }
 
             // Validate homepage: must be an https URL if provided
