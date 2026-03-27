@@ -9,206 +9,162 @@
 
   body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    background: linear-gradient(160deg, #0a0e18 0%, #121628 50%, #0e1220 100%);
-    color: #c8d0e0;
+    background: #fafbfc;
+    color: #1a1a2e;
     min-height: 100vh;
     padding: 40px 20px 80px;
   }
 
   header { text-align: center; margin-bottom: 32px; }
-  header h1 { font-size: 2.2rem; font-weight: 700; color: #e8ecf4; margin-bottom: 8px; }
+  header h1 { font-size: 2.2rem; font-weight: 700; color: #1a1a2e; margin-bottom: 8px; }
   header h1 .emoji { font-size: 2.4rem; }
-  header p { font-size: 1rem; color: #7888a8; max-width: 520px; margin: 0 auto; }
-  header a { color: #5a9cf5; text-decoration: none; }
+  header p { font-size: 1rem; color: #666; max-width: 520px; margin: 0 auto; }
+  header a { color: #2563eb; text-decoration: none; }
   header a:hover { text-decoration: underline; }
 
   /* ── stats banner ── */
   .stats-banner {
     display: flex; justify-content: center; align-items: center; gap: 32px;
     margin: 0 auto 24px; padding: 20px 32px; max-width: 680px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px;
+    background: #fff; border: 1px solid #e8e8e8; border-radius: 16px;
   }
   .stat-item { text-align: center; }
-  .stat-number { font-size: 2rem; font-weight: 700; color: #e8ecf4; line-height: 1.2; }
-  .stat-number.highlight { color: #34d399; }
-  .stat-label { font-size: 0.82rem; color: #5a7090; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
-  .stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.08); }
+  .stat-number { font-size: 2rem; font-weight: 700; color: #1a1a2e; line-height: 1.2; }
+  .stat-number.highlight { color: #059669; }
+  .stat-label { font-size: 0.82rem; color: #888; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .stat-divider { width: 1px; height: 40px; background: #e0e0e0; }
 
   /* ── search bar ── */
   .search-container { max-width: 680px; margin: 0 auto 40px; position: relative; }
   .search-input {
     width: 100%; padding: 12px 44px 12px 16px;
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px; color: #dce2f0; font-size: 0.95rem; outline: none;
+    background: #fff; border: 1px solid #ddd;
+    border-radius: 12px; color: #333; font-size: 0.95rem; outline: none;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .search-input::placeholder { color: #4a5a78; }
-  .search-input:focus { border-color: rgba(90,156,245,0.4); box-shadow: 0 0 0 3px rgba(90,156,245,0.1); }
+  .search-input::placeholder { color: #aaa; }
+  .search-input:focus { border-color: rgba(37,99,235,0.4); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
   .search-clear {
     position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; color: #5a7090; font-size: 1.2rem;
+    background: none; border: none; color: #999; font-size: 1.2rem;
     cursor: pointer; display: none; padding: 4px; line-height: 1;
   }
   .search-clear.visible { display: block; }
-  .search-clear:hover { color: #8898b8; }
+  .search-clear:hover { color: #666; }
 
-  /* ── sidebar + content layout ── */
-  .layout-container {
-    display: flex;
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-    align-items: flex-start;
+  /* ── tree layout ── */
+  .tree-children {
+    margin-left: 20px;
+    padding-left: 20px;
+    border-left: 1px solid var(--node-color, #ddd);
   }
-
-  /* Left column: domain list */
-  .domain-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    flex-shrink: 0;
-    width: 280px;
-  }
-
-  /* Domain box */
-  .domain-box {
-    width: 280px;
-    padding: 12px 16px;
-    border-radius: 10px;
-    font-weight: 600;
-    cursor: pointer;
-    user-select: none;
+  .tree-node {
     position: relative;
-    transition: transform 0.15s, box-shadow 0.2s;
-    border: 1px solid rgba(255,255,255,0.1);
-    background: rgba(255,255,255,0.05);
-    color: #dce2f0;
+    margin: 4px 0;
+  }
+  .tree-node::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 16px;
+    width: 20px;
+    height: 1px;
+    background: var(--node-color, #ddd);
+  }
+
+  /* ── node box ── */
+  .node-box {
+    border-radius: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
   }
-  .domain-box:hover { transform: translateY(-2px); }
-  .domain-box.active {
-    box-shadow: 0 0 20px var(--dcolor, rgba(255,255,255,0.2));
+  .node-box:hover { transform: translateY(-1px); }
+
+  .node-box.root-node {
+    font-size: 1.3rem;
+    font-weight: 700;
+    padding: 14px 24px;
+    justify-content: center;
   }
-  .domain-box .icon { font-size: 1.2em; flex-shrink: 0; }
-  .domain-box .dbox-name {
-    font-size: 0.88rem; color: #e8ecf4; line-height: 1.3;
-    flex: 1;
+  .node-box.domain-node {
+    font-size: 0.92rem;
+    font-weight: 600;
   }
-  .domain-box .badge-count {
-    font-size: 0.68rem; background: rgba(255,255,255,0.08); color: #7888a8;
+  .node-box.subgroup-node {
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .node-box.leaf-node {
+    font-size: 0.8rem;
+  }
+
+  .node-box .icon { flex-shrink: 0; }
+  .node-box .node-name { flex: 1; line-height: 1.3; }
+  .node-box .node-code { font-size: 0.72rem; color: #888; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
+  .node-box .badge-count {
+    font-size: 0.68rem; background: rgba(0,0,0,0.05); color: #888;
     padding: 1px 7px; border-radius: 8px; flex-shrink: 0;
   }
+  .node-box .sg-arrow {
+    font-size: 9px; transition: transform 0.2s; display: inline-block; flex-shrink: 0;
+  }
+  .node-box .sg-arrow.open { transform: rotate(90deg); }
 
-  /* Right column: subdomain panel area */
-  .panel-area {
-    flex: 1;
-    min-height: 200px;
-    position: relative;
+  /* ── expand/collapse panel ── */
+  .tree-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
   }
-
-  /* ── subdomain panel ── */
-  .subdomain-panel {
-    border-left: 2px solid var(--dcolor, rgba(255,255,255,0.1));
-    padding: 8px 0 8px 14px;
-    display: none;
-  }
-  .subdomain-panel.open {
-    display: block;
-    animation: panel-in 0.25s ease;
-  }
-  @keyframes panel-in {
-    from { opacity: 0; transform: translateX(-8px); }
-    to   { opacity: 1; transform: translateX(0); }
+  .tree-panel.open {
+    max-height: 8000px;
   }
 
-  /* Sub-group header (Astrophysics, Condensed Matter, etc.) */
-  .sub-group-header {
-    padding: 6px 8px 3px; font-size: 0.8rem; font-weight: 600;
-    color: #b8c8e0; cursor: pointer; user-select: none;
-    display: flex; align-items: center; gap: 6px;
-    transition: color 0.15s;
-  }
-  .sub-group-header:hover { color: #dce4f0; }
-  .sub-group-header .sg-arrow {
-    font-size: 9px; transition: transform 0.2s; display: inline-block;
-  }
-  .sub-group-header .sg-arrow.open { transform: rotate(90deg); }
-  .sub-group-header .sg-code { font-size: 0.72rem; color: #7888a8; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
-  .sub-group-header .sg-count { font-size: 0.68rem; color: #4a6080; background: rgba(74,144,217,0.08); padding: 1px 6px; border-radius: 8px; margin-left: auto; }
-
-  .sub-group-kids { overflow: hidden; max-height: 0; transition: max-height 0.3s ease; }
-  .sub-group-kids.open { max-height: 2000px; }
-
-  /* Leaf subdomain item */
-  .sub-item {
-    padding: 3px 6px; font-size: 0.78rem; color: #d0d8e8;
-    transition: background 0.15s; border-radius: 4px;
-    line-height: 1.4; padding-left: 16px; position: relative;
-  }
-  .sub-item::before {
-    content: '\2022'; position: absolute; left: 4px; color: #6878a0;
-  }
-  .sub-item:hover { background: rgba(255,255,255,0.03); }
-  .sub-item.search-match { background: rgba(90,156,245,0.08); }
-  .sub-item.search-match .sub-name { color: #dce2f0; }
-  .sub-item .sub-name { }
-  .sub-item .sub-code { font-size: 0.7rem; color: #8898b8; font-family: 'SF Mono','Fira Code','Consolas',monospace; }
-
-  /* Reviewer badge in list */
+  /* ── reviewer badge in list ── */
   .sub-reviewer {
-    display: block; margin-top: 2px;
+    display: inline-block; margin-top: 2px; margin-right: 4px;
     font-size: 0.7rem; font-weight: 600; padding: 2px 8px;
     border-radius: 10px; cursor: pointer;
     transition: box-shadow 0.2s;
-    white-space: nowrap; width: fit-content;
+    white-space: nowrap;
   }
-  .sub-reviewer:hover { box-shadow: 0 0 10px var(--dcolor, rgba(52,211,153,0.3)); }
+  .sub-reviewer:hover { box-shadow: 0 0 10px var(--node-color, rgba(5,150,105,0.3)); }
 
-  /* Reviewer detail card (inside panel) */
+  /* ── reviewer detail card ── */
   .reviewer-card {
     margin: 4px 0 8px 16px; padding: 10px 14px;
-    background: rgba(255,255,255,0.03); border: 1px solid rgba(52,211,153,0.2);
+    background: #fff; border: 1px solid #e0e0e0;
     border-radius: 8px; animation: card-in 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
   }
   @keyframes card-in {
     from { opacity: 0; transform: translateY(-4px); }
     to   { opacity: 1; transform: translateY(0); }
   }
-  .reviewer-card .rc-name { font-size: 0.92rem; font-weight: 600; color: #e8ecf4; margin-bottom: 3px; }
-  .reviewer-card .rc-role { font-size: 0.82rem; color: #8898b8; margin-bottom: 6px; }
-  .reviewer-card .rc-link { display: block; font-size: 0.78rem; color: #5a9cf5; text-decoration: none; margin-bottom: 2px; }
+  .reviewer-card .rc-name { font-size: 0.92rem; font-weight: 600; color: #1a1a2e; margin-bottom: 3px; }
+  .reviewer-card .rc-role { font-size: 0.82rem; color: #666; margin-bottom: 6px; }
+  .reviewer-card .rc-link { display: block; font-size: 0.78rem; color: #2563eb; text-decoration: none; margin-bottom: 2px; }
   .reviewer-card .rc-link:hover { text-decoration: underline; }
+
+  /* ── search match ── */
+  .search-match { background: rgba(37, 99, 235, 0.08); }
 
   /* ── tooltip ── */
   .desc-tooltip {
     display: none; position: fixed; z-index: 1000; max-width: 420px;
-    padding: 10px 14px; background: rgba(14,18,32,0.96);
-    border: 1px solid rgba(255,255,255,0.12); border-radius: 8px;
-    color: #c8d0e0; font-size: 0.78rem; line-height: 1.5;
-    pointer-events: none; box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    padding: 10px 14px; background: rgba(255,255,255,0.97);
+    border: 1px solid #ddd; border-radius: 8px;
+    color: #333; font-size: 0.78rem; line-height: 1.5;
+    pointer-events: none; box-shadow: 0 4px 20px rgba(0,0,0,0.12);
   }
 
   /* ── responsive ── */
   @media (max-width: 700px) {
-    .layout-container {
-      flex-direction: column;
-    }
-    .domain-sidebar {
-      width: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-    .domain-box {
-      width: auto;
-      flex: 1 1 auto;
-      min-width: 140px;
-      padding: 8px 12px;
-    }
-    .domain-box .dbox-name { font-size: 0.78rem; }
-    .panel-area { width: 100%; }
     .desc-tooltip { max-width: 280px; }
   }
   @media (max-width: 600px) {
@@ -216,7 +172,6 @@
     .stats-banner { gap: 16px; padding: 14px 16px; }
     .stat-number { font-size: 1.4rem; }
   }
-
 
 </style>
 </head>
@@ -237,10 +192,7 @@
   <button class="search-clear" id="search-clear">&times;</button>
 </div>
 
-<div class="layout-container">
-  <div class="domain-sidebar" id="domain-sidebar"></div>
-  <div class="panel-area" id="panel-area"></div>
-</div>
+<div id="tree-container" style="max-width:700px;margin:0 auto;"></div>
 
 
 <script>
@@ -671,107 +623,6 @@ banner.appendChild(mkStat(totalReviewers, 'Reviewers', true));
 
 /* ── track state ── */
 var openCard = null;
-var activeDomainBox = null;
-var activePanelEl = null;
-
-/* ── build subdomain panel content ── */
-function buildSubdomainPanel(domain, color) {
-  var panel = document.createElement('div');
-  panel.className = 'subdomain-panel';
-  panel.style.setProperty('--dcolor', color);
-
-
-  function addLeafItem(sub, parent) {
-    var item = document.createElement('div');
-    item.className = 'sub-item';
-    item._name = (sub.name || '').toLowerCase();
-    item._code = (sub.code || '').toLowerCase();
-
-    var nm = document.createElement('span');
-    nm.className = 'sub-name';
-    nm.textContent = sub.name;
-    item.appendChild(nm);
-
-    if (sub.code) {
-      var cd = document.createElement('span');
-      cd.className = 'sub-code';
-      cd.textContent = '(' + sub.code + ')';
-      item.appendChild(cd);
-    }
-
-    if (sub.maintainer && sub.maintainer.length > 0) {
-      sub.maintainer.forEach(function(m) {
-        var badge = document.createElement('span');
-        badge.className = 'sub-reviewer';
-        badge.textContent = m.nameEn;
-        badge.style.background = 'linear-gradient(135deg, ' + color + '25, ' + color + '12)';
-        badge.style.color = color;
-        badge.style.border = '1px solid ' + color + '50';
-        badge.addEventListener('click', function(e) {
-          e.stopPropagation();
-          if (openCard) { var prev = openCard; openCard.remove(); openCard = null; if (prev._gh === m.github) return; }
-          var card = document.createElement('div');
-          card.className = 'reviewer-card';
-          card._gh = m.github;
-          card.style.borderColor = color + '40';
-
-          var rn = document.createElement('div'); rn.className = 'rc-name'; rn.textContent = m.name + ' / ' + m.nameEn; card.appendChild(rn);
-          var rr = document.createElement('div'); rr.className = 'rc-role'; rr.textContent = m.role + ' \u00b7 ' + m.affiliation; card.appendChild(rr);
-          var rl = document.createElement('a'); rl.className = 'rc-link'; rl.href = 'https://github.com/' + m.github; rl.target = '_blank'; rl.rel = 'noopener'; rl.textContent = '@' + m.github + ' \u2192'; card.appendChild(rl);
-          if (m.homepage) {
-            var rh = document.createElement('a'); rh.className = 'rc-link'; rh.href = m.homepage; rh.target = '_blank'; rh.rel = 'noopener'; rh.textContent = '\ud83d\udd17 ' + m.homepage.replace(/^https?:\/\//, ''); card.appendChild(rh);
-          }
-          item.insertAdjacentElement('afterend', card);
-          openCard = card;
-        });
-        item.appendChild(badge);
-      });
-    }
-
-    /* tooltip on hover */
-    var desc = DESCRIPTIONS[sub.code];
-    if (desc) {
-      item.addEventListener('mouseenter', function() { showTooltip(item, desc); });
-      item.addEventListener('mouseleave', hideTooltip);
-    }
-
-    parent.appendChild(item);
-  }
-
-  function addChildren(children, parentEl) {
-    children.forEach(function(sub) {
-      if (sub.children && sub.children.length > 0) {
-        /* Sub-group (e.g. Astrophysics, Condensed Matter) */
-        var hdr = document.createElement('div');
-        hdr.className = 'sub-group-header';
-        hdr._name = (sub.name || '').toLowerCase();
-        hdr._code = (sub.code || '').toLowerCase();
-
-        var arr = document.createElement('span'); arr.className = 'sg-arrow'; arr.textContent = '\u25b6'; hdr.appendChild(arr);
-        var hn = document.createElement('span'); hn.textContent = sub.name; hdr.appendChild(hn);
-        if (sub.code) { var hc = document.createElement('span'); hc.className = 'sg-code'; hc.textContent = '(' + sub.code + ')'; hdr.appendChild(hc); }
-        var cnt = document.createElement('span'); cnt.className = 'sg-count'; cnt.textContent = sub.children.length; hdr.appendChild(cnt);
-
-        var kids = document.createElement('div');
-        kids.className = 'sub-group-kids';
-
-        hdr.addEventListener('click', function() {
-          kids.classList.toggle('open');
-          arr.classList.toggle('open');
-        });
-
-        parentEl.appendChild(hdr);
-        addChildren(sub.children, kids);
-        parentEl.appendChild(kids);
-      } else {
-        addLeafItem(sub, parentEl);
-      }
-    });
-  }
-
-  addChildren(domain.children, panel);
-  return panel;
-}
 
 /* ── flatten domains from DATA groups ── */
 var allDomains = [];
@@ -781,73 +632,264 @@ DATA.forEach(function(group) {
   });
 });
 
-/* ── build sidebar + panels ── */
-var sidebar = document.getElementById('domain-sidebar');
-var panelArea = document.getElementById('panel-area');
+/* ── compute rainbow colors ── */
+/* Count total leaves across all domains to assign hues */
+var domainLeafCounts = [];
+var totalLeafCount = 0;
+allDomains.forEach(function(domain) {
+  var lc = countLeaves(domain);
+  domainLeafCounts.push(lc);
+  totalLeafCount += lc;
+});
 
-/* Store references for each domain */
+/* Compute cumulative positions and assign hue ranges */
+var domainHues = [];
+var cumulative = 0;
+allDomains.forEach(function(domain, idx) {
+  var startHue = (cumulative / totalLeafCount) * 360;
+  cumulative += domainLeafCounts[idx];
+  var endHue = (cumulative / totalLeafCount) * 360;
+  domainHues.push({ start: startHue, end: endHue });
+});
+
+function hslColor(hue, s, l) {
+  return 'hsl(' + Math.round(hue) + ',' + s + '%,' + l + '%)';
+}
+function hslaColor(hue, s, l, a) {
+  return 'hsla(' + Math.round(hue) + ',' + s + '%,' + l + '%,' + a + ')';
+}
+
+function applyNodeStyle(el, hue) {
+  el.style.setProperty('--node-color', hslColor(hue, 70, 50));
+  el.style.border = '1px solid ' + hslaColor(hue, 70, 50, 0.3);
+  el.style.background = 'linear-gradient(135deg, ' + hslaColor(hue, 70, 50, 0.1) + ', ' + hslaColor(hue, 70, 50, 0.04) + ')';
+}
+
+/* ── build the vertical tree ── */
+var treeContainer = document.getElementById('tree-container');
+
+/* Root node */
+var rootNode = document.createElement('div');
+rootNode.className = 'node-box root-node';
+applyNodeStyle(rootNode, 200);
+rootNode.textContent = '\ud83c\udf0d OpenScientist';
+treeContainer.appendChild(rootNode);
+
+/* Domain children container */
+var domainChildren = document.createElement('div');
+domainChildren.className = 'tree-children';
+domainChildren.style.setProperty('--node-color', '#ccc');
+treeContainer.appendChild(domainChildren);
+
+/* Store references for search */
 var domainEntries = [];
 
-allDomains.forEach(function(domain, idx) {
-  var color = domain.color;
+allDomains.forEach(function(domain, domIdx) {
+  var hueRange = domainHues[domIdx];
+  var domainHue = hueRange.start;
 
-  /* Domain box in sidebar */
+  /* Domain tree node wrapper */
+  var domWrapper = document.createElement('div');
+  domWrapper.className = 'tree-node';
+  domWrapper.style.setProperty('--node-color', hslColor(domainHue, 70, 50));
+
+  /* Domain box */
   var box = document.createElement('div');
-  box.className = 'domain-box';
-  box.style.setProperty('--dcolor', color);
-  box.style.borderColor = color + '60';
-  box.style.background = 'linear-gradient(135deg, ' + color + '18, ' + color + '08)';
+  box.className = 'node-box domain-node';
+  applyNodeStyle(box, domainHue);
 
   var icon = document.createElement('span');
   icon.className = 'icon';
   icon.textContent = domain.icon;
   box.appendChild(icon);
 
-  var name = document.createElement('div');
-  name.className = 'dbox-name';
-  name.textContent = domain.name;
-  box.appendChild(name);
+  var nameEl = document.createElement('span');
+  nameEl.className = 'node-name';
+  nameEl.textContent = domain.name;
+  box.appendChild(nameEl);
 
-  var leafCount = countLeaves(domain);
+  var leafCount = domainLeafCounts[domIdx];
   var badge = document.createElement('span');
   badge.className = 'badge-count';
   badge.textContent = leafCount;
   box.appendChild(badge);
 
-  /* Build panel (hidden by default) */
-  var panel = buildSubdomainPanel(domain, color);
-  panelArea.appendChild(panel);
+  domWrapper.appendChild(box);
 
-  /* Click handler */
+  /* Panel for domain's children (collapsible) */
+  var panel = document.createElement('div');
+  panel.className = 'tree-panel';
+
+  var panelChildren = document.createElement('div');
+  panelChildren.className = 'tree-children';
+  panelChildren.style.setProperty('--node-color', hslColor(domainHue, 70, 50));
+
+  /* Build children recursively */
+  var leafIdx = { val: 0 };
+  buildTreeChildren(domain.children, panelChildren, hueRange, leafIdx, domIdx);
+
+  panel.appendChild(panelChildren);
+  domWrapper.appendChild(panel);
+
+  /* Click to expand/collapse */
   box.addEventListener('click', function() {
-    /* If clicking the already-active domain, close it */
-    if (activeDomainBox === box) {
-      box.classList.remove('active');
-      panel.classList.remove('open');
-      activeDomainBox = null;
-      activePanelEl = null;
-      return;
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) {
+      box.style.boxShadow = '0 0 16px ' + hslaColor(domainHue, 70, 50, 0.3);
+    } else {
+      box.style.boxShadow = '';
     }
-
-    /* Close previously open domain */
-    if (activeDomainBox) {
-      activeDomainBox.classList.remove('active');
-    }
-    if (activePanelEl) {
-      activePanelEl.classList.remove('open');
-    }
-
-    /* Open this domain */
-    box.classList.add('active');
-    panel.classList.add('open');
-    activeDomainBox = box;
-    activePanelEl = panel;
   });
 
-  sidebar.appendChild(box);
+  domainChildren.appendChild(domWrapper);
 
-  domainEntries.push({ box: box, panel: panel, domain: domain });
+  domainEntries.push({ box: box, panel: panel, wrapper: domWrapper, domain: domain, hue: domainHue });
 });
+
+function buildTreeChildren(children, parentEl, hueRange, leafIdx, domIdx) {
+  children.forEach(function(sub) {
+    if (sub.children && sub.children.length > 0) {
+      /* Sub-group node */
+      var subLeafCount = countLeaves(sub);
+      var subHue = hueRange.start + ((leafIdx.val + subLeafCount / 2) / domainLeafCounts[domIdx]) * (hueRange.end - hueRange.start);
+
+      var nodeWrap = document.createElement('div');
+      nodeWrap.className = 'tree-node';
+      nodeWrap.style.setProperty('--node-color', hslColor(subHue, 70, 50));
+
+      var sgBox = document.createElement('div');
+      sgBox.className = 'node-box subgroup-node';
+      sgBox._name = (sub.name || '').toLowerCase();
+      sgBox._code = (sub.code || '').toLowerCase();
+      applyNodeStyle(sgBox, subHue);
+
+      var arrow = document.createElement('span');
+      arrow.className = 'sg-arrow';
+      arrow.textContent = '\u25b6';
+      sgBox.appendChild(arrow);
+
+      var sgName = document.createElement('span');
+      sgName.className = 'node-name';
+      sgName.textContent = sub.name;
+      sgBox.appendChild(sgName);
+
+      if (sub.code) {
+        var sgCode = document.createElement('span');
+        sgCode.className = 'node-code';
+        sgCode.textContent = '(' + sub.code + ')';
+        sgBox.appendChild(sgCode);
+      }
+
+      var sgCount = document.createElement('span');
+      sgCount.className = 'badge-count';
+      sgCount.textContent = sub.children.length;
+      sgBox.appendChild(sgCount);
+
+      nodeWrap.appendChild(sgBox);
+
+      var subPanel = document.createElement('div');
+      subPanel.className = 'tree-panel';
+
+      var subChildren = document.createElement('div');
+      subChildren.className = 'tree-children';
+      subChildren.style.setProperty('--node-color', hslColor(subHue, 70, 50));
+
+      buildTreeChildren(sub.children, subChildren, hueRange, leafIdx, domIdx);
+
+      subPanel.appendChild(subChildren);
+      nodeWrap.appendChild(subPanel);
+
+      sgBox.addEventListener('click', function() {
+        subPanel.classList.toggle('open');
+        arrow.classList.toggle('open');
+        if (subPanel.classList.contains('open')) {
+          sgBox.style.boxShadow = '0 0 16px ' + hslaColor(subHue, 70, 50, 0.3);
+        } else {
+          sgBox.style.boxShadow = '';
+        }
+      });
+
+      parentEl.appendChild(nodeWrap);
+    } else {
+      /* Leaf node */
+      var leafHue = hueRange.start + (leafIdx.val / domainLeafCounts[domIdx]) * (hueRange.end - hueRange.start);
+      leafIdx.val++;
+
+      var leafWrap = document.createElement('div');
+      leafWrap.className = 'tree-node';
+      leafWrap.style.setProperty('--node-color', hslColor(leafHue, 70, 50));
+
+      var leafBox = document.createElement('div');
+      leafBox.className = 'node-box leaf-node';
+      leafBox._name = (sub.name || '').toLowerCase();
+      leafBox._code = (sub.code || '').toLowerCase();
+      applyNodeStyle(leafBox, leafHue);
+
+      var bullet = document.createElement('span');
+      bullet.textContent = '\u2022';
+      bullet.style.color = hslColor(leafHue, 70, 50);
+      bullet.style.flexShrink = '0';
+      leafBox.appendChild(bullet);
+
+      var leafName = document.createElement('span');
+      leafName.className = 'node-name';
+      leafName.textContent = sub.name;
+      leafBox.appendChild(leafName);
+
+      if (sub.code) {
+        var leafCode = document.createElement('span');
+        leafCode.className = 'node-code';
+        leafCode.textContent = '(' + sub.code + ')';
+        leafBox.appendChild(leafCode);
+      }
+
+      /* Reviewer badges */
+      if (sub.maintainer && sub.maintainer.length > 0) {
+        sub.maintainer.forEach(function(m) {
+          var badge = document.createElement('span');
+          badge.className = 'sub-reviewer';
+          badge.textContent = m.nameEn;
+          badge.style.color = hslColor(leafHue, 70, 50);
+          badge.style.border = '1px solid ' + hslaColor(leafHue, 70, 50, 0.4);
+          badge.style.background = hslaColor(leafHue, 70, 50, 0.08);
+          badge.style.setProperty('--node-color', hslColor(leafHue, 70, 50));
+          badge.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (openCard) { var prev = openCard; openCard.remove(); openCard = null; if (prev._gh === m.github) return; }
+            var card = document.createElement('div');
+            card.className = 'reviewer-card';
+            card._gh = m.github;
+
+            var rn = document.createElement('div'); rn.className = 'rc-name'; rn.textContent = m.name + ' / ' + m.nameEn; card.appendChild(rn);
+            var rr = document.createElement('div'); rr.className = 'rc-role'; rr.textContent = m.role + ' \u00b7 ' + m.affiliation; card.appendChild(rr);
+            var rl = document.createElement('a'); rl.className = 'rc-link'; rl.href = 'https://github.com/' + m.github; rl.target = '_blank'; rl.rel = 'noopener'; rl.textContent = '@' + m.github + ' \u2192'; card.appendChild(rl);
+            if (m.homepage) {
+              var rh = document.createElement('a'); rh.className = 'rc-link'; rh.href = m.homepage; rh.target = '_blank'; rh.rel = 'noopener'; rh.textContent = '\ud83d\udd17 ' + m.homepage.replace(/^https?:\/\//, ''); card.appendChild(rh);
+            }
+            leafWrap.insertAdjacentElement('afterend', card);
+            openCard = card;
+          });
+          leafBox.appendChild(badge);
+        });
+      }
+
+      /* Also handle domain-level maintainers (e.g. Economics) */
+      if (sub.maintainer === undefined && domain && domain.maintainer) {
+        /* skip - domain-level maintainers are shown elsewhere */
+      }
+
+      /* tooltip on hover */
+      var desc = DESCRIPTIONS[sub.code];
+      if (desc) {
+        leafBox.addEventListener('mouseenter', function() { showTooltip(leafBox, desc); });
+        leafBox.addEventListener('mouseleave', hideTooltip);
+      }
+
+      leafWrap.appendChild(leafBox);
+      parentEl.appendChild(leafWrap);
+    }
+  });
+}
 
 /* ── search ── */
 var searchInput = document.getElementById('search-input');
@@ -858,73 +900,65 @@ searchInput.addEventListener('input', function() {
   searchClear.classList.toggle('visible', q.length > 0);
 
   /* Reset all search highlights */
-  document.querySelectorAll('.sub-item').forEach(function(el) { el.classList.remove('search-match'); });
-  document.querySelectorAll('.sub-group-kids').forEach(function(el) { el.classList.remove('open'); });
+  document.querySelectorAll('.node-box.leaf-node').forEach(function(el) { el.classList.remove('search-match'); });
+  document.querySelectorAll('.tree-panel').forEach(function(el) { el.classList.remove('open'); });
   document.querySelectorAll('.sg-arrow').forEach(function(el) { el.classList.remove('open'); });
+  document.querySelectorAll('.node-box').forEach(function(el) { el.style.boxShadow = ''; });
 
   if (!q) {
-    /* Close all panels */
-    domainEntries.forEach(function(entry) {
-      entry.panel.classList.remove('open');
-      entry.box.classList.remove('active');
-    });
-    activeDomainBox = null;
-    activePanelEl = null;
     return;
   }
 
   /* Search all domains and open matching ones */
-  var firstMatch = null;
   domainEntries.forEach(function(entry) {
     var panel = entry.panel;
-    var items = panel.querySelectorAll('.sub-item');
-    var headers = panel.querySelectorAll('.sub-group-header');
+    var leafNodes = panel.querySelectorAll('.node-box.leaf-node');
+    var subgroupNodes = panel.querySelectorAll('.node-box.subgroup-node');
     var hasMatch = false;
 
-    items.forEach(function(item) {
-      if ((item._name && item._name.includes(q)) || (item._code && item._code.includes(q))) {
-        item.classList.add('search-match');
+    leafNodes.forEach(function(leafBox) {
+      if ((leafBox._name && leafBox._name.includes(q)) || (leafBox._code && leafBox._code.includes(q))) {
+        leafBox.classList.add('search-match');
         hasMatch = true;
-        /* expand parent sub-group if any */
-        var parent = item.parentElement;
-        if (parent && parent.classList.contains('sub-group-kids')) {
-          parent.classList.add('open');
-          var hdr = parent.previousElementSibling;
-          if (hdr) {
-            var arrow = hdr.querySelector('.sg-arrow');
-            if (arrow) arrow.classList.add('open');
+        /* expand parent panels */
+        var el = leafBox.parentElement;
+        while (el) {
+          if (el.previousElementSibling && el.previousElementSibling.classList && el.previousElementSibling.classList.contains('tree-children')) {
+            /* skip */
           }
+          var parentPanel = el.closest('.tree-panel');
+          if (parentPanel) {
+            parentPanel.classList.add('open');
+            /* open arrow in parent subgroup */
+            var parentNode = parentPanel.parentElement;
+            if (parentNode) {
+              var sgBox = parentNode.querySelector(':scope > .node-box .sg-arrow');
+              if (sgBox) sgBox.classList.add('open');
+            }
+          }
+          el = parentPanel ? parentPanel.parentElement : null;
         }
       }
     });
 
-    headers.forEach(function(hdr) {
-      if ((hdr._name && hdr._name.includes(q)) || (hdr._code && hdr._code.includes(q))) {
+    subgroupNodes.forEach(function(sgBox) {
+      if ((sgBox._name && sgBox._name.includes(q)) || (sgBox._code && sgBox._code.includes(q))) {
         hasMatch = true;
-        var kids = hdr.nextElementSibling;
-        if (kids) {
-          kids.classList.add('open');
-          var arrow = hdr.querySelector('.sg-arrow');
+        /* expand the subgroup's panel */
+        var sgPanel = sgBox.parentElement.querySelector('.tree-panel');
+        if (sgPanel) {
+          sgPanel.classList.add('open');
+          var arrow = sgBox.querySelector('.sg-arrow');
           if (arrow) arrow.classList.add('open');
         }
       }
     });
 
     if (hasMatch) {
-      entry.box.classList.add('active');
-      panel.classList.add('open');
-      if (!firstMatch) firstMatch = entry;
-    } else {
-      entry.box.classList.remove('active');
-      panel.classList.remove('open');
+      entry.panel.classList.add('open');
+      entry.box.style.boxShadow = '0 0 16px ' + hslaColor(entry.hue, 70, 50, 0.3);
     }
   });
-
-  /* Show the first matching domain's panel in the panel area */
-  if (firstMatch) {
-    activeDomainBox = firstMatch.box;
-    activePanelEl = firstMatch.panel;
-  }
 });
 
 searchClear.addEventListener('click', function() {
