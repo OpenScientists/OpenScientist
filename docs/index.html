@@ -873,11 +873,6 @@ function buildTreeChildren(children, parentEl, hueRange, leafIdx, domIdx) {
         });
       }
 
-      /* Also handle domain-level maintainers (e.g. Economics) */
-      if (sub.maintainer === undefined && domain && domain.maintainer) {
-        /* skip - domain-level maintainers are shown elsewhere */
-      }
-
       /* tooltip on hover */
       var desc = DESCRIPTIONS[sub.code];
       if (desc) {
