@@ -163,6 +163,27 @@ Replace specific references with generic descriptions: "our internal dataset" â†
 - Standard textbook knowledge with no novel application
 - Any personally identifiable information
 
+### Single-Pass Peer Review
+
+After generating each skill item, perform **exactly one** peer review using a different AI agent family. Do not skip this when a partner agent is available, and do not let the item bounce through multiple reviewers.
+
+- If the current agent is **Claude Code**, ask **Codex CLI** or **Gemini** to review.
+- If the current agent is **Codex CLI**, ask **Claude Code** or **Gemini** to review.
+- If the current agent is **Gemini**, ask **Codex CLI** or **Claude Code** to review.
+- Do not request a second review after the first peer responds.
+- Do not ask the reviewer to trigger another reviewer.
+
+The peer review should check:
+- scientific correctness
+- transferability beyond the original project
+- replicability of the reasoning protocol
+- de-identification and privacy
+- whether the item is genuinely worth reusing
+
+If the reviewer finds problems, revise the skill once using that feedback, but **do not** send the revised version out for another review pass.
+
+If no partner agent is available in the current environment, record that explicitly instead of pretending review happened.
+
 ### Output per item
 ```json
 {
@@ -173,7 +194,12 @@ Replace specific references with generic descriptions: "our internal dataset" â†
   "reasoning_steps": ["Step 1...", "Step 2..."],
   "tools": ["tool â€” what it does"],
   "pitfalls": ["Mistake and how to avoid"],
-  "confidence": "high | medium | low"
+  "confidence": "high | medium | low",
+  "peer_review": {
+    "reviewer_agent": "claude-code | codex-cli | gemini | unavailable",
+    "review_status": "approved | revise | needs_external_review",
+    "notes": ["Short review findings"]
+  }
 }
 ```
 
