@@ -40,6 +40,8 @@ This intuition lives in your head — the know-how, the heuristics, the reasonin
 
 Each skill encodes the knowledge, tools, reasoning protocols, and common pitfalls of a scientific field. Skills can be written by domain experts or **auto-extracted from your research conversations** using `/extract-knowhow`. Point your AI agent at a skill, and it reasons like a domain expert.
 
+Using a skill is not free: a strong skill can cause an AI agent to make broad modifications, run long workflows, or consume significant tokens. Treat skills as expert guidance and review the expected scope and cost before executing them deeply.
+
 ---
 
 <h2 align="center">2. How to Contribute</h2>

@@ -31,6 +31,13 @@ reviewed_by: []
      Example: "Use this skill when analyzing experimental data involving quantum entanglement.
      It guides the AI through Bell inequality calculations and statistical interpretation." -->
 
+## AI Usage Disclaimer
+<!-- REQUIRED -->
+<!-- Explain that applying this skill can trigger broad edits, long-running tool calls, or high token usage.
+     Make clear that the skill is guidance, not a guarantee, and that users should review scope/cost before running it. -->
+
+This skill may trigger substantial file modifications, long-running tool usage, and significant token consumption. Treat it as expert guidance rather than a guarantee of correctness, and review the proposed scope, cost, and downstream effects before letting an AI agent execute it at full depth.
+
 ## Tools
 <!-- REQUIRED -->
 <!-- List the key tools, software, libraries, databases, or instruments used in this domain.
