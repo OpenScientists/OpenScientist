@@ -134,17 +134,14 @@ $extract-knowhow
 > **提示：** 使用最强模型 + 最大推理深度，可获得最佳提取效果。
 
 该命令会：
-1. 扫描你的对话历史
+1. 自动扫描你的对话历史
 2. 过滤出与科研相关的会话
 3. 按项目聚类并映射到科学领域
-4. 从 10 个类别中提取可复用的 know-how（文献调研、提出想法、形式化、实验设计、数据采集、代码实现、结果分析、工具开发、论文写作、同行评审）
-5. 展示报告供你确认
-6. 生成 Skill 文件供你审核
-
-命令运行完成后，检查生成文件的科学准确性，然后提交：
-
-- [**通过 GitHub Issue 提交你的 Skill →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)（直接粘贴文件内容，无需 git！）
-- 或者，如果你熟悉 git：fork 仓库，将文件复制到 `skills/<领域>/<子领域>/`，提交 PR
+4. 从 10 个类别中提取可复用的 know-how
+5. 在浏览器中打开交互式 HTML 报告
+6. 你在浏览器中审核、编辑、接受/拒绝每个 skill
+7. 点击 "Save Approved Skills" → 回到终端
+8. Claude Code / Codex CLI 自动通过 GitHub Issue 提交到 OpenScientist
 
 ### 3.3 方式 B：网页版用户一键提取（ChatGPT / Claude / Gemini）
 

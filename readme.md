@@ -134,17 +134,14 @@ $extract-knowhow
 > **Tip:** Use the most capable model with maximum effort for best extraction results.
 
 The command will:
-1. Scan your conversation history
+1. Scan your conversation history automatically
 2. Filter to research-related sessions only
 3. Cluster by project and map to scientific domains
-4. Extract reusable know-how across 10 categories (literature survey, ideation, formalization, experiment design, data collection, implementation, analysis, tool development, writing, peer review)
-5. Present a report for your review
-6. Generate skill files for you to review
-
-After the command finishes, review the generated files for scientific accuracy, then submit:
-
-- [**Submit your skill via GitHub Issue →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml) (just paste the file content — no git required!)
-- Or, if you prefer git: fork the repo, copy the files into `skills/<domain>/<subdomain>/`, and open a PR
+4. Extract reusable know-how across 10 categories
+5. Open an interactive HTML report in your browser
+6. You review, edit, accept/reject skills in the browser
+7. Click "Save Approved Skills" → go back to terminal
+8. Claude Code / Codex CLI auto-submits to OpenScientist via GitHub Issues
 
 ### 3.3 Method B: One-Click Prompt for Web Users (ChatGPT / Claude / Gemini)
 
