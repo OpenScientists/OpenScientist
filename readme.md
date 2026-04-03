@@ -193,7 +193,11 @@ Write your own skill following the [template](skills/_template.md), then [**subm
 
 <h2 align="center">4. Become a Reviewer</h2>
 
-Reviewers are domain experts who ensure the scientific quality of skills in their subdomain. You need peer-review experience in the relevant field and meet the same standards as contributors.
+Reviewers are domain experts who guard the scientific quality of skills in their subdomain. You need substantial peer-review experience in the relevant field.
+
+**What you do:** Review submitted skills for scientific accuracy and completeness. Provide constructive feedback to contributors. Promote skill status from `draft` to `reviewed` once verified.
+
+**What you get:** Approve or request changes on submissions in your subdomain. Self-approve and merge your own contributions. Auto-assigned via CODEOWNERS when your subdomain receives a new submission.
 
 [**Apply to become a reviewer →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=03-maintainer-application.yml)
 

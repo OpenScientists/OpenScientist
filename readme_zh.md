@@ -193,7 +193,11 @@ Step 3: [具体步骤]
 
 <h2 align="center">4. 成为审稿人</h2>
 
-审稿人是负责其子领域 Skill 科学质量的领域专家。需要在相关领域有充分的同行评审经验。
+审稿人是守护其子领域 Skill 科学质量的领域专家。需要在相关领域有充分的同行评审经验。
+
+**你的职责：** 审核提交的 Skill 的科学准确性和完整性。为贡献者提供建设性反馈。验证通过后将 Skill 状态从 `draft` 提升为 `reviewed`。
+
+**你的权限：** 对所属子领域的提交进行审批或提出修改意见。可以自审自批、合并自己的贡献。通过 CODEOWNERS 自动分配为审稿人。
 
 [**申请成为审稿人 →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=03-maintainer-application.yml)
 
