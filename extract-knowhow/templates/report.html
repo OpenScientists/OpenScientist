@@ -45,8 +45,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .editable{border:1px solid transparent;border-radius:3px;padding:2px 4px;transition:border-color .2s;outline:none;min-height:1.5em}
 .editable:hover{border-color:#30363d}
 .editable:focus{border-color:#58a6ff;background:#161b22}
-.detail ul{padding-left:1.25rem}
+.detail ul{padding-left:1.25rem;margin:.25rem 0}
 .detail li{margin:.25rem 0}
+.editable strong{color:#e6edf3;font-weight:600}
+.editable code{background:#30363d;padding:1px 5px;border-radius:3px;font-size:.85em}
 .submit-section{margin-top:2rem;padding:2rem;background:#161b22;border:1px solid #30363d;border-radius:8px;text-align:center}
 .submit-btn{background:#238636;color:#fff;border:none;padding:12px 32px;border-radius:6px;font-size:1rem;font-weight:600;cursor:pointer;transition:background .2s}
 .submit-btn:hover{background:#2ea043}
@@ -126,10 +128,19 @@ document.getElementById('s-sess').textContent = DATA.total_sessions || 0;
 const root = document.getElementById('projects');
 
 function esc(s){const d=document.createElement('div');d.textContent=s||'';return d.innerHTML}
-function mkEditable(text, cls){return `<span class="editable ${cls||''}" contenteditable="true">${esc(text)}</span>`}
+function md(s){
+  if(!s) return '';
+  return esc(s)
+    .replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>')
+    .replace(/`(.+?)`/g,'<code style="background:#30363d;padding:1px 5px;border-radius:3px;font-size:.85em">$1</code>')
+    .replace(/\n- (.+)/g,'\n<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gs,'<ul>$1</ul>')
+    .replace(/\n/g,'<br>');
+}
+function mkEditable(text, cls){return `<span class="editable ${cls||''}" contenteditable="true">${md(text)}</span>`}
 function mkEditableList(arr, cls){
   if(!arr||!arr.length) return '<ul><li><span class="editable" contenteditable="true">N/A</span></li></ul>';
-  return '<ul>'+arr.map(item=>`<li><span class="editable ${cls||''}" contenteditable="true">${esc(item)}</span></li>`).join('')+'</ul>';
+  return '<ul>'+arr.map(item=>`<li><span class="editable ${cls||''}" contenteditable="true">${md(item)}</span></li>`).join('')+'</ul>';
 }
 
 projects.forEach((proj, pi) => {
