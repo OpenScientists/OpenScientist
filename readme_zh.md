@@ -308,8 +308,6 @@ Step 3: [具体步骤]
 ### 5.4 行动
 
 - [**申请成为类别审稿人 →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=maintainer-application.yml)
-- [**查看全部审稿人（知识树）→**](https://openscientists.github.io/OpenScientist/)
-- [**查看全部审稿人列表 →**](https://openscientists.github.io/OpenScientist/reviewers.html)
 
 ---
 
@@ -360,9 +358,11 @@ Step 3: [具体步骤]
 
 <div align="center">
 
-## 组织者与赞助商
+## 衷心感谢
 
-[**查看全部组织者与赞助商 →**](https://openscientists.github.io/OpenScientist/organizers.html)
+感谢所有让这一切成为可能的人：
+
+[**贡献者 →**](https://github.com/OpenScientists/OpenScientist/graphs/contributors) · [**审稿人 →**](https://openscientists.github.io/OpenScientist/reviewers.html) · [**赞助商 →**](https://openscientists.github.io/OpenScientist/organizers.html) · [**组织者 →**](https://openscientists.github.io/OpenScientist/organizers.html)
 
 ---
 

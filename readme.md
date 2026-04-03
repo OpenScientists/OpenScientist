@@ -308,8 +308,6 @@ Reviewers are domain experts who ensure the scientific quality of skills in thei
 ### 5.4 Actions
 
 - [**Apply to become a category reviewer →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=maintainer-application.yml)
-- [**View all reviewers in the Knowledge Tree →**](https://openscientists.github.io/OpenScientist/)
-- [**View all reviewers list →**](https://openscientists.github.io/OpenScientist/reviewers.html)
 
 ---
 
@@ -363,9 +361,11 @@ Want to help with CI, documentation, community management, or project operations
 
 <div align="center">
 
-## Organizer & Sponsor
+## Acknowledgments
 
-[**View all Organizers & Sponsors →**](https://openscientists.github.io/OpenScientist/organizers.html)
+With gratitude to everyone who makes this possible:
+
+[**Contributors →**](https://github.com/OpenScientists/OpenScientist/graphs/contributors) · [**Reviewers →**](https://openscientists.github.io/OpenScientist/reviewers.html) · [**Sponsors →**](https://openscientists.github.io/OpenScientist/organizers.html) · [**Organizers →**](https://openscientists.github.io/OpenScientist/organizers.html)
 
 ---
 
