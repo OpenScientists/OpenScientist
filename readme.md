@@ -62,6 +62,8 @@ $extract-knowhow
 
 The command automatically scans your conversation history, extracts research know-how, and opens an interactive report in your browser — where you can review, edit, and submit skills directly to OpenScientist via GitHub.
 
+Note: the current `extract-knowhow` workflow is still stronger in Claude Code than in a true multi-agent setup. If OpenScientist wants extracted skills to be reviewed across Claude Code, Codex CLI, and Gemini, the package likely needs a redesign rather than just incremental prompt edits.
+
 ### Method B: One-Click Prompt for Web Users (ChatGPT / Claude / Gemini)
 
 Enable memory so the AI can access your history:
