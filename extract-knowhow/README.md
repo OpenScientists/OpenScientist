@@ -8,6 +8,8 @@ When you use Claude Code for scientific research — data analysis, paper writin
 
 `/extract-knowhow` analyzes your conversation history and extracts this knowledge into structured, reusable skill files that follow the OpenScientist format.
 
+Generated skills should be treated as high-value but potentially resource-intensive guidance: applying one may trigger large edits, long tool runs, or significant token usage depending on the task.
+
 ## Install
 
 ```bash

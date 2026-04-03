@@ -239,6 +239,10 @@ reviewed_by: []
 
 ${desc}
 
+## AI Usage Disclaimer
+
+This skill may trigger substantial file modifications, long-running tool usage, and significant token consumption. Treat it as expert guidance rather than a guarantee of correctness, and review the proposed scope, cost, and downstream effects before letting an AI agent execute it at full depth.
+
 ## Tools
 
 ${tools.length ? tools.map(t=>'- **'+t.split(' — ')[0]+'**'+(t.includes(' — ')?': '+t.split(' — ').slice(1).join(' — '):'')).join('\n') : '- N/A'}
