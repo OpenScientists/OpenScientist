@@ -80,50 +80,28 @@ Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy).
 
 > [View all 155 subcategories in the interactive knowledge tree →](https://openscientists.github.io/OpenScientist/)
 
----
+Skills are also classified by **research activity type** — 10 categories that span across all domains:
 
-<h2 align="center">3. How It Works</h2>
-
-### 3.1 Install
-
-```bash
-npm install -g @openscientist/extract-knowhow
-```
-
-This installs the `/extract-knowhow` command for both **Claude Code** and **Codex CLI**. Use it to automatically extract research skills from your conversation history, or browse and install individual skills from the `skills/` directory.
-
-### 3.2 What's inside a skill file?
-
-
-| Section                 | Purpose                                                 |
-| ------------------------- | --------------------------------------------------------- |
-| YAML frontmatter        | Machine-readable metadata: name, domain, author, status |
-| `## Purpose`            | When to invoke this skill                               |
-| `## Domain Knowledge`   | Core concepts, equations, established facts             |
-| `## Reasoning Protocol` | Step-by-step guide for AI reasoning                     |
-| `## Tools`              | Key software, libraries, databases used in this domain  |
-| `## Common Pitfalls`    | Mistakes and edge cases to avoid                        |
-| `## Examples`           | Worked examples                                         |
-| `## References`         | Key papers and textbooks                                |
-
-### 3.3 Quality tiers
-
-
-| Status     | Meaning                               |
-| ------------ | --------------------------------------- |
-| `draft`    | Authored, not yet peer-reviewed       |
-| `reviewed` | Approved by a domain expert reviewer  |
-| `verified` | Tested in real AI-scientist workflows |
-
-Every pull request touching a skill file triggers CI (`utils/tools/validate.py`) that checks required fields and section structure. A PR cannot be merged if validation fails.
+| # | Category | What it covers |
+|---|----------|---------------|
+| 1 | Literature & Survey | Search strategies, paper filtering, citation analysis |
+| 2 | Ideation | Hypothesis formation, research question development |
+| 3 | Formalization | Proof strategies, modeling, mathematical formulation |
+| 4 | Experiment Design | Protocols, control strategies, variable selection |
+| 5 | Data & Collection | Data sources, cleaning pipelines, labeling |
+| 6 | Implementation | Coding patterns, library choices, debugging |
+| 7 | Analysis | Statistical methods, visualization, interpretation |
+| 8 | Tool & Method Dev | Reusable tools, method innovations, workflows |
+| 9 | Writing & Publication | Paper structure, figures, claim formulation |
+| 10 | Peer Review & Rebuttal | Self-critique, reviewer responses, revision |
 
 ---
 
-<h2 align="center">4. How to Contribute</h2>
+<h2 align="center">3. How to Contribute</h2>
 
 We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRIBUTING.md) for the full guide.
 
-### 4.1 Contributor Requirements
+### 3.1 Contributor Requirements
 
 > **Who can contribute?** We maintain a high bar for scientific accuracy.
 
@@ -131,16 +109,22 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRI
 - **Real-name identity** — Contributors must use their real name and institutional affiliation in the `author` field (e.g., `"Dr. Albert Einstein (ETH Zürich Physics)"`)
 - **Domain expertise** — You may only contribute skills within your area of professional expertise
 
-### 4.2 Method A: Auto-Extract with `/extract-knowhow` (Recommended)
+### 3.2 Method A: Auto-Extract with `/extract-knowhow` (Recommended)
 
-Let AI analyze your conversation history and automatically generate skill files from your research know-how. After installing (see [3.1 Install](#31-install)), run in Claude Code:
+Let AI analyze your conversation history and automatically generate skill files from your research know-how:
+
+```bash
+npm install -g @openscientist/extract-knowhow
+```
+
+Then in Claude Code or Codex CLI:
 ```
 /model opus[1m]
 /effort max
 /extract-knowhow
 ```
 
-> **Tip:** `/extract-knowhow` uses your current Claude Code model to analyze sessions. For best results, use Opus with 1M context and max effort. This ensures deep analysis across your full conversation history.
+> **Tip:** For best results, use Opus with 1M context and max effort. This ensures deep analysis across your full conversation history.
 
 The command will:
 1. Scan your conversation history
@@ -155,19 +139,46 @@ After the command finishes, review the generated files for scientific accuracy, 
 - [**Submit your skill via GitHub Issue →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml) (just paste the file content — no git required!)
 - Or, if you prefer git: fork the repo, copy the files into `skills/<domain>/<subdomain>/`, and open a PR
 
-### 4.3 Method B: Write Manually
+### 3.3 Method B: Write Manually
 
 Write your own skill following the [template](skills/_template.md), then submit:
 
 - [**Submit your skill via GitHub Issue →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)
 
-### 4.4 Don't see your field?
+### 3.4 Don't see your field?
 
 - [**Propose a new area →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=propose-new-area.md)
 
-### 4.5 Need a skill but can't write it yourself?
+### 3.5 Need a skill but can't write it yourself?
 
 - [**Request a skill →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=skill-request.yml)
+
+---
+
+<h2 align="center">4. Skill Format</h2>
+
+### 4.1 What's inside a skill file?
+
+
+| Section                 | Purpose                                                 |
+| ------------------------- | --------------------------------------------------------- |
+| YAML frontmatter        | Machine-readable metadata: name, domain, author, status |
+| `## Purpose`            | When to invoke this skill                               |
+| `## Domain Knowledge`   | Core concepts, equations, established facts             |
+| `## Reasoning Protocol` | Step-by-step guide for AI reasoning                     |
+| `## Tools`              | Key software, libraries, databases used in this domain  |
+| `## Common Pitfalls`    | Mistakes and edge cases to avoid                        |
+| `## Examples`           | Worked examples                                         |
+| `## References`         | Key papers and textbooks                                |
+
+### 4.2 Quality tiers
+
+
+| Status     | Meaning                               |
+| ------------ | --------------------------------------- |
+| `draft`    | Authored, not yet peer-reviewed       |
+| `reviewed` | Approved by a domain expert reviewer  |
+| `verified` | Tested in real AI-scientist workflows |
 
 ---
 
@@ -177,7 +188,7 @@ Reviewers are domain experts who ensure the scientific quality of skills in thei
 
 ### 5.1 Requirements
 
-- Meet all requirements for [contributors](#4-how-to-contribute-a-skill) (i.e. be a qualified contributor first)
+- Meet all requirements for [contributors](#3-how-to-contribute) (i.e. be a qualified contributor first)
 - Have substantial peer-review experience in the relevant subdomain
 
 ### 5.2 Responsibilities
@@ -300,50 +311,28 @@ OpenScientist 是一个完全开源、非盈利的项目。随着项目的发展
 
 > [查看全部 155 个子领域（交互式知识树）→](https://openscientists.github.io/OpenScientist/)
 
----
+Skill 还按**科研活动类型**分类 —— 10 个跨领域的类别：
 
-<h2 align="center">3. 如何使用</h2>
-
-### 3.1 安装
-
-```bash
-npm install -g @openscientist/extract-knowhow
-```
-
-安装后，**Claude Code** 和 **Codex CLI** 都可使用 `/extract-knowhow` 命令。用它从你的对话历史中自动提取科研 Skill，或浏览 `skills/` 目录手动安装单个 Skill。
-
-### 3.2 Skill 文件的结构
-
-
-| 部分                    | 作用                                           |
-| ------------------------- | ------------------------------------------------ |
-| YAML frontmatter        | 机器可读的元数据：name、domain、author、status |
-| `## Purpose`            | 何时调用此 Skill                               |
-| `## Domain Knowledge`   | 核心概念、公式、既定事实                       |
-| `## Reasoning Protocol` | AI 推理的分步指南                              |
-| `## Tools`              | 该领域常用的软件、库、数据库                   |
-| `## Common Pitfalls`    | 常见错误和边界情况                             |
-| `## Examples`           | 示范性例题                                     |
-| `## References`         | 关键论文和教材                                 |
-
-### 3.3 质量等级
-
-
-| 状态       | 含义                           |
-| ------------ | -------------------------------- |
-| `draft`    | 已撰写，尚未同行评审           |
-| `reviewed` | 已由领域专家审核通过           |
-| `verified` | 已在真实 AI 科学家工作流中验证 |
-
-每次 PR 修改 Skill 文件时，CI 会自动运行 `utils/tools/validate.py` 检查必填字段和章节结构。校验不通过则无法合并。
+| # | 类别 | 涵盖内容 |
+|---|------|---------|
+| 1 | 文献调研 | 搜索策略、论文筛选、引用分析 |
+| 2 | 提出想法 | 假设构建、研究问题提炼 |
+| 3 | 形式化 | 证明策略、建模、数学表述 |
+| 4 | 实验设计 | 实验方案、控制策略、变量选择 |
+| 5 | 数据采集 | 数据来源、清洗流程、标注 |
+| 6 | 代码实现 | 编码模式、库选择、调试 |
+| 7 | 结果分析 | 统计方法、可视化、结果解读 |
+| 8 | 工具开发 | 可复用工具、方法创新、工作流 |
+| 9 | 论文写作 | 论文结构、图表、论点构建 |
+| 10 | 同行评审 | 自我批判、回复审稿人、修改 |
 
 ---
 
-<h2 align="center">4. 如何贡献</h2>
+<h2 align="center">3. 如何贡献</h2>
 
 我们欢迎各领域专家贡献知识。请参阅 [CONTRIBUTING.md](utils/CONTRIBUTING.md) 了解完整流程。
 
-### 4.1 贡献者要求
+### 3.1 贡献者要求
 
 > **谁可以贡献？** 我们对科学准确性有严格要求。
 
@@ -351,16 +340,22 @@ npm install -g @openscientist/extract-knowhow
 - **实名认证** — 贡献者必须在 `author` 字段使用真实姓名和所属机构（如 `"Dr. Albert Einstein (ETH Zürich Physics)"`)
 - **领域专长** — 只能在自己的专业领域内贡献 Skill
 
-### 4.2 方式 A：用 `/extract-knowhow` 自动提取（推荐）
+### 3.2 方式 A：用 `/extract-knowhow` 自动提取（推荐）
 
-让 AI 分析你的对话历史，自动从中提取科研 know-how 并生成 Skill 文件。安装后（见 [3.1 安装](#31-安装)），在 Claude Code 中运行：
+让 AI 分析你的对话历史，自动从中提取科研 know-how 并生成 Skill 文件：
+
+```bash
+npm install -g @openscientist/extract-knowhow
+```
+
+然后在 Claude Code 或 Codex CLI 中运行：
 ```
 /model opus[1m]
 /effort max
 /extract-knowhow
 ```
 
-> **提示：** `/extract-knowhow` 使用你当前 Claude Code 会话的模型来分析。为获得最佳提取效果，建议使用 Opus 模型、1M 上下文、最大推理深度。
+> **提示：** 为获得最佳提取效果，建议使用 Opus 模型、1M 上下文、最大推理深度。
 
 该命令会：
 1. 扫描你的对话历史
@@ -375,19 +370,46 @@ npm install -g @openscientist/extract-knowhow
 - [**通过 GitHub Issue 提交你的 Skill →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)（直接粘贴文件内容，无需 git！）
 - 或者，如果你熟悉 git：fork 仓库，将文件复制到 `skills/<领域>/<子领域>/`，提交 PR
 
-### 4.3 方式 B：手动撰写
+### 3.3 方式 B：手动撰写
 
 参照[模板](skills/_template.md)撰写你的 Skill，然后提交：
 
 - [**通过 GitHub Issue 提交你的 Skill →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)
 
-### 4.4 没有你的研究方向？
+### 3.4 没有你的研究方向？
 
 - [**提议新领域 →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=propose-new-area.md)
 
-### 4.5 需要某个 Skill 但自己写不了？
+### 3.5 需要某个 Skill 但自己写不了？
 
 - [**请求 Skill →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=skill-request.yml)
+
+---
+
+<h2 align="center">4. Skill 格式</h2>
+
+### 4.1 Skill 文件的结构
+
+
+| 部分                    | 作用                                           |
+| ------------------------- | ------------------------------------------------ |
+| YAML frontmatter        | 机器可读的元数据：name、domain、author、status |
+| `## Purpose`            | 何时调用此 Skill                               |
+| `## Domain Knowledge`   | 核心概念、公式、既定事实                       |
+| `## Reasoning Protocol` | AI 推理的分步指南                              |
+| `## Tools`              | 该领域常用的软件、库、数据库                   |
+| `## Common Pitfalls`    | 常见错误和边界情况                             |
+| `## Examples`           | 示范性例题                                     |
+| `## References`         | 关键论文和教材                                 |
+
+### 4.2 质量等级
+
+
+| 状态       | 含义                           |
+| ------------ | -------------------------------- |
+| `draft`    | 已撰写，尚未同行评审           |
+| `reviewed` | 已由领域专家审核通过           |
+| `verified` | 已在真实 AI 科学家工作流中验证 |
 
 ---
 
@@ -397,7 +419,7 @@ npm install -g @openscientist/extract-knowhow
 
 ### 5.1 要求
 
-- 满足[贡献者](#4-如何贡献)的所有要求（即首先是合格的贡献者）
+- 满足[贡献者](#3-如何贡献)的所有要求（即首先是合格的贡献者）
 - 在相关子领域有充分的同行评审经验
 
 ### 5.2 职责
