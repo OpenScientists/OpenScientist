@@ -42,30 +42,7 @@
 
 ---
 
-<h2 align="center">2. 领域列表</h2>
-
-<div align="center">
-
-对齐 [arXiv 分类体系](https://arxiv.org/category_taxonomy)。8 个顶层领域，155 个子领域。
-
-| 领域                                                           | arXiv                                              | 子领域数 | 审稿人   |
-| ---------------------------------------------------------------- | ---------------------------------------------------- | ---------- | ---------- |
-| ⚛️ Physics 物理                                              | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51       | *招募中* |
-| ➗ Mathematics 数学                                            | math                                               | 32       | *招募中* |
-| 💻 Computer Science 计算机科学                                 | cs                                                 | 40       | *招募中* |
-| 🧬 Quantitative Biology 定量生物学                             | q-bio                                              | 10       | *招募中* |
-| 📊 Statistics 统计学                                           | stat                                               | 6        | *招募中* |
-| ⚡ Electrical Engineering & Systems Science 电气工程与系统科学 | eess                                               | 4        | *招募中* |
-| 📈 Economics 经济学                                            | econ                                               | 3        | *招募中* |
-| 💹 Quantitative Finance 定量金融                               | q-fin                                              | 9        | *招募中* |
-
-[查看全部 155 个子领域（交互式知识树）→](https://openscientists.github.io/OpenScientist/)
-
-</div>
-
----
-
-<h2 align="center">3. 如何贡献</h2>
+<h2 align="center">2. 如何贡献</h2>
 
 ### 方式 A：用 `/extract-knowhow` 自动提取（推荐）
 
@@ -191,7 +168,7 @@ Step 3: [具体步骤]
 
 ---
 
-<h2 align="center">4. 成为审稿人</h2>
+<h2 align="center">3. 成为审稿人</h2>
 
 审稿人是守护其子领域 Skill 科学质量的领域专家。需要在相关领域有充分的同行评审经验。
 
@@ -200,6 +177,29 @@ Step 3: [具体步骤]
 **你的权限：** 对所属子领域的提交进行审批或提出修改意见。
 
 [**申请成为审稿人 →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=03-maintainer-application.yml)
+
+---
+
+<h2 align="center">4. 领域列表</h2>
+
+<div align="center">
+
+对齐 [arXiv 分类体系](https://arxiv.org/category_taxonomy)。8 个顶层领域，155 个子领域。
+
+| 领域                                                           | arXiv                                              | 子领域数 | 审稿人   |
+| ---------------------------------------------------------------- | ---------------------------------------------------- | ---------- | ---------- |
+| ⚛️ Physics 物理                                              | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51       | *招募中* |
+| ➗ Mathematics 数学                                            | math                                               | 32       | *招募中* |
+| 💻 Computer Science 计算机科学                                 | cs                                                 | 40       | *招募中* |
+| 🧬 Quantitative Biology 定量生物学                             | q-bio                                              | 10       | *招募中* |
+| 📊 Statistics 统计学                                           | stat                                               | 6        | *招募中* |
+| ⚡ Electrical Engineering & Systems Science 电气工程与系统科学 | eess                                               | 4        | *招募中* |
+| 📈 Economics 经济学                                            | econ                                               | 3        | *招募中* |
+| 💹 Quantitative Finance 定量金融                               | q-fin                                              | 9        | *招募中* |
+
+[查看全部 155 个子领域（交互式知识树）→](https://openscientists.github.io/OpenScientist/)
+
+</div>
 
 ---
 

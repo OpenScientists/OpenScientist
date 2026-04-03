@@ -42,30 +42,7 @@ Each skill encodes the knowledge, tools, reasoning protocols, and common pitfall
 
 ---
 
-<h2 align="center">2. Domains</h2>
-
-<div align="center">
-
-Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy). 8 domains, 155 subcategories.
-
-| Domain                                      | arXiv                                              | Subcategories | Reviewer(s)        |
-| --------------------------------------------- | ---------------------------------------------------- | --------------- | -------------------- |
-| ⚛️ Physics                                | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51            | *Seeking reviewer* |
-| ➗ Mathematics                              | math                                               | 32            | *Seeking reviewer* |
-| 💻 Computer Science                         | cs                                                 | 40            | *Seeking reviewer* |
-| 🧬 Quantitative Biology                     | q-bio                                              | 10            | *Seeking reviewer* |
-| 📊 Statistics                               | stat                                               | 6             | *Seeking reviewer* |
-| ⚡ Electrical Engineering & Systems Science | eess                                               | 4             | *Seeking reviewer* |
-| 📈 Economics                                | econ                                               | 3             | *Seeking reviewer* |
-| 💹 Quantitative Finance                     | q-fin                                              | 9             | *Seeking reviewer* |
-
-[View all 155 subcategories in the interactive knowledge tree →](https://openscientists.github.io/OpenScientist/)
-
-</div>
-
----
-
-<h2 align="center">3. How to Contribute</h2>
+<h2 align="center">2. How to Contribute</h2>
 
 ### Method A: Auto-Extract with `/extract-knowhow` (Recommended)
 
@@ -191,7 +168,7 @@ Write your own skill following the [template](skills/_template.md), then [**subm
 
 ---
 
-<h2 align="center">4. Become a Reviewer</h2>
+<h2 align="center">3. Become a Reviewer</h2>
 
 Reviewers are domain experts who guard the scientific quality of skills in their subdomain. You need substantial peer-review experience in the relevant field.
 
@@ -200,6 +177,29 @@ Reviewers are domain experts who guard the scientific quality of skills in their
 **What you get:** Approve or request changes on submissions in your subdomain.
 
 [**Apply to become a reviewer →**](https://github.com/OpenScientists/OpenScientist/issues/new?template=03-maintainer-application.yml)
+
+---
+
+<h2 align="center">4. Domains</h2>
+
+<div align="center">
+
+Aligned with the [arXiv category taxonomy](https://arxiv.org/category_taxonomy). 8 domains, 155 subcategories.
+
+| Domain                                      | arXiv                                              | Subcategories | Reviewer(s)        |
+| --------------------------------------------- | ---------------------------------------------------- | --------------- | -------------------- |
+| ⚛️ Physics                                | astro-ph, cond-mat, gr-qc, hep, nlin, physics, ... | 51            | *Seeking reviewer* |
+| ➗ Mathematics                              | math                                               | 32            | *Seeking reviewer* |
+| 💻 Computer Science                         | cs                                                 | 40            | *Seeking reviewer* |
+| 🧬 Quantitative Biology                     | q-bio                                              | 10            | *Seeking reviewer* |
+| 📊 Statistics                               | stat                                               | 6             | *Seeking reviewer* |
+| ⚡ Electrical Engineering & Systems Science | eess                                               | 4             | *Seeking reviewer* |
+| 📈 Economics                                | econ                                               | 3             | *Seeking reviewer* |
+| 💹 Quantitative Finance                     | q-fin                                              | 9             | *Seeking reviewer* |
+
+[View all 155 subcategories in the interactive knowledge tree →](https://openscientists.github.io/OpenScientist/)
+
+</div>
 
 ---
 
