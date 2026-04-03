@@ -127,6 +127,8 @@ Read full `.jsonl` files. For sessions > 30,000 chars, split into 25,000-char se
 
 **The goal is to extract tacit knowledge — the hard-won intuition, thinking frameworks, and principles that experts carry in their heads but never write down.** Skills should be useful to ANY researcher in the same subdomain, not just the original author.
 
+**Prefer fewer, stronger skills over many weak ones.** If an item is borderline generic, borderline project-specific, or hard to reuse without the original context, skip it.
+
 When extracting from a specific project, always ask: "Would this help a new PhD student entering this field?" If yes, extract it. If it only makes sense in the context of this particular project, generalize it or skip it.
 
 **Generalize:** "For our LiFePO4 simulation, AMIX=0.05 worked" → "For GGA+U calculations on any transition metal oxide with localized d-electrons, reduce AMIX to 0.05"
@@ -162,6 +164,38 @@ Replace specific references with generic descriptions: "our internal dataset" �
 - Personal preferences with no scientific basis
 - Standard textbook knowledge with no novel application
 - Any personally identifiable information
+
+### Reuse Quality Bar
+
+Only keep an item if it passes **all** of these checks:
+
+1. **Transferable:** It applies to a recognizable class of problems in the subdomain, not just one project file or one dataset.
+2. **Actionable:** A researcher could do something differently after reading it.
+3. **Replicable:** The reasoning protocol is concrete enough that another researcher could follow it without hidden project context.
+4. **Non-obvious:** It contains judgment, heuristics, failure diagnosis, or tradeoffs that are not just textbook definitions.
+5. **Scoped correctly:** It is neither too broad ("validate results carefully") nor too narrow ("change line 214 in script X").
+
+Reject items that fail any one of these checks.
+
+### Specificity Calibration
+
+- **Too general:** advice that could apply to almost any research project without change. Example: "Check your data quality before analysis."
+- **Too specific:** advice that depends on one dataset, one repository, one file path, or one unpublished internal convention.
+- **Good:** a reusable pattern with a clear trigger condition, action, and scientific rationale. Example: "When land-surface model validation maps look spatially sparse, first verify that remote CSV endpoints returned actual data rather than HTML error pages, because silent fetch failures often masquerade as missing observations."
+
+When in doubt, rewrite toward the "Good" level or skip the item.
+
+### Replicability Requirements
+
+Each accepted item should make the hidden know-how operational:
+
+- `title`: name the problem class or decision point, not a vague theme
+- `description`: state the trigger condition, recommended action, and why it matters scientifically
+- `reasoning_steps`: include 3-7 concrete steps or checks another researcher could actually follow
+- `tools`: include only tools that materially support the workflow, not every tool mentioned in the session
+- `pitfalls`: describe concrete failure modes, not generic warnings
+
+If you cannot write a concrete reasoning protocol or concrete pitfalls, the item is probably not reusable enough to keep.
 
 ### Output per item
 ```json
@@ -229,7 +263,7 @@ Assemble all results into a single JSON object:
 
 Create directory: `mkdir -p ~/.openscientist`
 
-Read the HTML template from the npm package at `templates/report.html` (installed alongside this command). The template contains all CSS, JS, and the interactive UI. Replace the `__REPORT_DATA__` placeholder in the template with the actual JSON data object from Step 6.2.
+Read the HTML template from the npm package at `templates/report.html` (installed alongside this command). The template contains all CSS, JS, and the interactive UI. Replace only the `__REPORT_DATA__` token in the line `const DATA = __REPORT_DATA__;` with the raw JSON data object from Step 6.2, and preserve every other template line exactly.
 
 If the template file is not found, fall back to writing a minimal HTML page that embeds the JSON data and displays it.
 
