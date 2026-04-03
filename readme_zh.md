@@ -52,6 +52,8 @@ npm install -g @openscientist/extract-knowhow
 
 **Claude Code:**
 ```
+/model opus[1m]
+/effort max
 /extract-knowhow
 ```
 
@@ -60,7 +62,7 @@ npm install -g @openscientist/extract-knowhow
 $extract-knowhow
 ```
 
-该命令会自动扫描你的对话历史，提取科研 know-how，并在浏览器中打开交互式报告 — 你可以在其中审核、编辑，并直接通过 GitHub 提交到 OpenScientist。
+为获得更高质量的提取结果，推荐在 Claude Code 中先设置 `/model opus[1m]` 和 `/effort max`。随后该命令会自动扫描你的对话历史，提取科研 know-how，并在浏览器中打开交互式报告 — 你可以在其中审核、编辑，并直接通过 GitHub 提交到 OpenScientist。
 
 ### 方式 B：网页版用户一键提取（ChatGPT / Claude / Gemini）
 

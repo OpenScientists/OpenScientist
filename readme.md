@@ -52,6 +52,8 @@ npm install -g @openscientist/extract-knowhow
 
 **Claude Code:**
 ```
+/model opus[1m]
+/effort max
 /extract-knowhow
 ```
 
@@ -60,7 +62,7 @@ npm install -g @openscientist/extract-knowhow
 $extract-knowhow
 ```
 
-The command automatically scans your conversation history, extracts research know-how, and opens an interactive report in your browser — where you can review, edit, and submit skills directly to OpenScientist via GitHub.
+The recommended Claude Code setup for highest-quality extraction is `/model opus[1m]` with `/effort max`. The command then scans your conversation history, extracts research know-how, and opens an interactive report in your browser — where you can review, edit, and submit skills directly to OpenScientist via GitHub.
 
 ### Method B: One-Click Prompt for Web Users (ChatGPT / Claude / Gemini)
 

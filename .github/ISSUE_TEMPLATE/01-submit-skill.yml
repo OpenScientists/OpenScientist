@@ -10,7 +10,7 @@ body:
 
         **How to generate a skill:**
         1. Install: `npm install -g @openscientist/extract-knowhow`
-        2. In Claude Code: `/model opus[1m]` → `/effort max` → `/extract-knowhow`
+        2. Recommended in Claude Code for highest-quality extraction: `/model opus[1m]` → `/effort max` → `/extract-knowhow`
         3. Review the generated file, then paste its content here.
 
   - type: input
@@ -22,24 +22,12 @@ body:
     validations:
       required: true
 
-  - type: dropdown
+  - type: input
     id: role
     attributes:
       label: Role
-      description: Your current academic or professional role
-      options:
-        - "Undergraduate Student"
-        - "Master's Student"
-        - "PhD Candidate"
-        - "Postdoctoral Researcher"
-        - "Research Scientist"
-        - "Research Engineer"
-        - "Assistant Professor"
-        - "Associate Professor"
-        - "Professor"
-        - "Principal Investigator (PI)"
-        - "Industry Researcher"
-        - "Independent Researcher"
+      description: Your current academic or professional role. Free text is used here so the report page can prefill it correctly.
+      placeholder: "e.g. PhD Candidate"
     validations:
       required: true
 
