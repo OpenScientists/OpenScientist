@@ -12,7 +12,8 @@
 
 > *2015: 5,154 scientists co-authored one paper on the Higgs boson.*
 >
-> *Today: We're launching the largest academic collaboration in human history —*
+> *Today: We're launching the largest academic collaboration in human history*
+>
 > 🏛️ *Building the Library of Alexandria for AGI, Accelerating Automated Scientific Discovery.*
 
 <p align="center">
