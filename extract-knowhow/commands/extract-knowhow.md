@@ -4,6 +4,13 @@ You are a research know-how extraction agent for **OpenScientist**. Analyze the 
 
 **Run fully automatically with ZERO user interaction.** Do not pause or ask questions. Report progress at each milestone.
 
+**Caching:** All intermediate results are cached to `~/.claude/openscientist/cache/`. Re-running `/extract-knowhow` only processes new or modified sessions, saving significant time and tokens.
+
+At the start, create the cache directory:
+```bash
+mkdir -p ~/.claude/openscientist/cache/meta ~/.claude/openscientist/cache/knowhow
+```
+
 ---
 
 ## Stage 1: Session Discovery
@@ -22,21 +29,43 @@ Skip files < 500 bytes. Sort by modification time. Report: "Found N sessions acr
 
 ## Stage 2: Metadata Extraction & Filtering
 
-For each session, read first 50 lines and last 20 lines:
+**Caching:** For each session, check if `~/.claude/openscientist/cache/meta/<session_id>.json` exists AND the cached file's timestamp matches the `.jsonl` file size. If cache hit, load cached metadata and skip parsing. If cache miss, parse and save to cache.
+
+For each uncached session, read first 50 lines and last 20 lines:
 1. Count user messages (lines with `"role":"user"`)
 2. Extract first user message text
 3. Calculate duration from timestamps
 4. Extract `cwd` field
+5. Classify as research / engineering / other (see Stage 3 rules below)
+
+Save the extracted metadata + classification to `~/.claude/openscientist/cache/meta/<session_id>.json`:
+```json
+{
+  "session_id": "abc123",
+  "project_path": "/Users/x/project",
+  "first_prompt": "...",
+  "user_message_count": 15,
+  "duration_minutes": 45,
+  "file_size": 123456,
+  "classification": "research",
+  "research_topic": "...",
+  "activity_types": ["06-coding-and-execution", "07-result-analysis"]
+}
+```
+
+**Deduplication:** If multiple sessions have the same content (identical `first_prompt` and similar `user_message_count`), keep the one with more user messages.
 
 **Filter out:** < 2 user messages, < 1 minute duration, agent sub-sessions (first 5 lines contain `"RESPOND WITH ONLY A VALID JSON OBJECT"` or `"record_facets"`)
 
-Report: "After filtering, N sessions remain."
+Report: "After filtering, N sessions remain (X from cache, Y newly analyzed)."
 
 ---
 
 ## Stage 3: Research Relevance Filter
 
-Classify each session as **research** / **engineering** / **other** based on first user message + 3 evenly-spaced samples.
+**Note:** Classification is now done in Stage 2 (and cached). This stage simply aggregates the results.
+
+Classification rules for reference:
 
 **research:** literature search, hypothesis formation, derivation, experiment design, data collection, statistical analysis, scientific writing, peer review, scientific tool development, grant writing
 
@@ -69,6 +98,10 @@ Report: "Mapped N research projects to domains."
 ## Stage 5: Know-How Extraction
 
 For each project, extract ALL know-how automatically.
+
+**Caching:** Check if `~/.claude/openscientist/cache/knowhow/<session_id>.json` exists for each session in the project. If ALL sessions in a project have cached know-how AND no session files have changed, load from cache and skip extraction. Otherwise, re-extract for that project only.
+
+**Incremental limit:** Process at most 50 new (uncached) sessions per run. If more remain, report: "Processed 50 sessions. Run /extract-knowhow again to analyze the remaining N sessions."
 
 ### Read Content
 Read full `.jsonl` files. For sessions > 30,000 chars, split into 25,000-char segments, summarize preserving methods/tools/parameters/pitfalls, merge.
@@ -106,7 +139,19 @@ Read full `.jsonl` files. For sessions > 30,000 chars, split into 25,000-char se
 }
 ```
 
-Report: "Extracted N know-how items across all projects."
+After extraction, save each session's know-how to `~/.claude/openscientist/cache/knowhow/<session_id>.json`:
+```json
+{
+  "session_id": "abc123",
+  "project_name": "...",
+  "domain": "physics",
+  "subdomain": "computational-physics",
+  "skills": [ ...extracted items... ],
+  "file_size": 123456
+}
+```
+
+Report: "Extracted N know-how items across all projects (X from cache, Y newly extracted)."
 
 ---
 
