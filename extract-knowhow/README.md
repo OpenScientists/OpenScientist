@@ -51,6 +51,19 @@ The command will:
 5. **Present** a report for your review and confirmation
 6. **Generate** OpenScientist-format skill files ready for contribution
 
+## Current Limitation
+
+`extract-knowhow` is installed for both Claude Code and Codex CLI, but the workflow is still effectively **Claude-first** in how it is framed and validated. It does not yet have a first-class cross-agent review step, and it does not yet treat peer review between Claude Code, Codex CLI, and Gemini as part of the extraction contract.
+
+That means the current package is useful, but it likely needs a broader redesign if OpenScientist wants extraction to be genuinely multi-agent rather than "generated once by a single assistant and then trusted."
+
+The likely redesign direction is:
+
+- make agent-to-agent review an explicit step rather than an optional manual habit
+- define a single-review handoff contract across Claude Code, Codex CLI, and Gemini
+- make the generated report preserve reviewer identity, review outcome, and review notes
+- distinguish "agent-generated draft knowledge" from "peer-reviewed reusable skill"
+
 ## Output
 
 Generated skill files follow the [OpenScientist skill format](https://github.com/OpenScientists/OpenScientist/blob/main/utils/SKILL_SCHEMA.md) with all required sections:
