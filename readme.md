@@ -38,11 +38,11 @@
 
 ### 1.1 What is it
 
-OpenScientist is a curated library of **Claude Code Skills** — structured Markdown files that give AI agents deep, expert-level reasoning capabilities in specific scientific domains.
+OpenScientist is a curated library of **AI agent skills** (compatible with **Claude Code** and **Codex CLI**) — structured Markdown files that give AI agents deep, expert-level reasoning capabilities in specific scientific domains.
 
 ### 1.2 How it works
 
-Each skill is written by a domain expert and encodes the knowledge, tools, reasoning protocols, and common pitfalls of their field. Point your AI agent at a skill, and it reasons like a domain expert.
+Each skill encodes the knowledge, tools, reasoning protocols, and common pitfalls of a scientific field. Skills can be written by domain experts or **auto-extracted from your research conversations** using `/extract-knowhow`. Point your AI agent at a skill, and it reasons like a domain expert.
 
 ### 1.3 What can you do
 
@@ -133,13 +133,7 @@ We welcome contributions from domain experts. See [CONTRIBUTING.md](utils/CONTRI
 
 ### 4.2 Method A: Auto-Extract with `/extract-knowhow` (Recommended)
 
-Let AI analyze your Claude Code conversation history and automatically generate skill files from your research know-how:
-
-```bash
-npm install -g @openscientist/extract-knowhow
-```
-
-Then in Claude Code, switch to the best model for extraction and run:
+Let AI analyze your conversation history and automatically generate skill files from your research know-how. After installing (see [3.1 Install](#31-install)), run in Claude Code:
 ```
 /model opus[1m]
 /effort max
@@ -213,17 +207,17 @@ Reviewers are domain experts who ensure the scientific quality of skills in thei
 
 | Template                                                                                                               | When to use                              |
 | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------ |
+| [Submit a Skill](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)                 | Submit a skill (from `/extract-knowhow` or manually written) |
 | [Skill Request](https://github.com/OpenScientists/OpenScientist/issues/new?template=skill-request.yml)                 | Need a skill but can't write it yourself |
 | [Reviewer Application](https://github.com/OpenScientists/OpenScientist/issues/new?template=maintainer-application.yml) | Apply to become a subdomain reviewer     |
 | [Propose New Area](https://github.com/OpenScientists/OpenScientist/issues/new?template=propose-new-area.md)            | Propose a new top-level domain           |
 
-### 6.2 Pull request workflow
+### 6.2 Skill submission workflow
 
-1. Contributor opens a skill PR
-2. CI automatically runs `validate.py` to check required fields and structure
-3. CODEOWNERS assigns the subdomain reviewer
-4. Reviewer approves or requests changes
-5. Merge → skill status starts as `draft`
+1. Contributor submits a skill via [GitHub Issue](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml) (or opens a PR)
+2. Subdomain reviewer checks scientific accuracy
+3. Maintainer adds the skill file to the repo
+4. Skill status starts as `draft`
 
 **Status lifecycle:** `draft` → `reviewed` (reviewer approves) → `verified` (tested in a real AI workflow)
 
@@ -264,11 +258,11 @@ Want to help with CI, documentation, community management, or project operations
 
 ### 1.1 这是什么
 
-OpenScientist 是一个精心策划的 **Claude Code Skills 库** —— 每个 Skill 是一个结构化的 Markdown 文件，赋予 AI 智能体特定科学领域的专家级推理能力。
+OpenScientist 是一个精心策划的 **AI agent 技能库**（兼容 **Claude Code** 和 **Codex CLI**）—— 每个 Skill 是一个结构化的 Markdown 文件，赋予 AI 智能体特定科学领域的专家级推理能力。
 
 ### 1.2 如何运作
 
-每个 Skill 由该领域的专家撰写，编码了领域知识、工具、推理协议和常见陷阱。让 AI 调用一个 Skill，就能像领域专家一样思考。
+每个 Skill 编码了领域知识、工具、推理协议和常见陷阱。Skill 可以由领域专家手动撰写，也可以通过 `/extract-knowhow` **从你的科研对话中自动提取**。让 AI 调用一个 Skill，就能像领域专家一样思考。
 
 ### 1.3 你能做什么
 
@@ -359,13 +353,7 @@ npm install -g @openscientist/extract-knowhow
 
 ### 4.2 方式 A：用 `/extract-knowhow` 自动提取（推荐）
 
-让 AI 分析你的 Claude Code 对话历史，自动从中提取科研 know-how 并生成 Skill 文件：
-
-```bash
-npm install -g @openscientist/extract-knowhow
-```
-
-然后在 Claude Code 中切换到最佳模型并运行：
+让 AI 分析你的对话历史，自动从中提取科研 know-how 并生成 Skill 文件。安装后（见 [3.1 安装](#31-安装)），在 Claude Code 中运行：
 ```
 /model opus[1m]
 /effort max
@@ -439,17 +427,17 @@ npm install -g @openscientist/extract-knowhow
 
 | 模板                                                                                                                   | 使用场景                    |
 | ------------------------------------------------------------------------------------------------------------------------ | ----------------------------- |
+| [Submit a Skill](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml)                 | 提交 Skill（自动提取或手动撰写） |
 | [Skill Request](https://github.com/OpenScientists/OpenScientist/issues/new?template=skill-request.yml)                 | 需要某个 Skill 但自己写不了 |
 | [Reviewer Application](https://github.com/OpenScientists/OpenScientist/issues/new?template=maintainer-application.yml) | 申请成为子领域审稿人        |
 | [Propose New Area](https://github.com/OpenScientists/OpenScientist/issues/new?template=propose-new-area.md)            | 提议新的顶层领域            |
 
-### 6.2 Pull Request 工作流
+### 6.2 Skill 提交工作流
 
-1. 贡献者提交 Skill PR
-2. CI 自动运行 `validate.py` 检查必填字段和结构
-3. CODEOWNERS 自动分配子领域审稿人
-4. 审稿人审批或提出修改意见
-5. 合并 → Skill 状态初始为 `draft`
+1. 贡献者通过 [GitHub Issue](https://github.com/OpenScientists/OpenScientist/issues/new?template=submit-skill.yml) 提交 Skill（或提交 PR）
+2. 子领域审稿人审核科学准确性
+3. 维护者将 Skill 文件添加到仓库
+4. Skill 状态初始为 `draft`
 
 **状态生命周期：** `draft` → `reviewed`（审稿人审核通过）→ `verified`（在真实 AI 工作流中验证）
 
