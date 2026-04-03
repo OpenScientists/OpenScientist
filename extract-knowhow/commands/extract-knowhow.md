@@ -157,6 +157,7 @@ Write a SINGLE self-contained HTML file to `~/.claude/openscientist/report.html`
    - Category badge with color coding (different color per category)
    - Title, description, confidence level
    - "Show details" expand button → reveals domain_knowledge, reasoning_steps, tools, pitfalls
+   - **All fields are editable inline** — title, description, domain_knowledge, reasoning_steps, tools, pitfalls all use `contenteditable="true"` so the user can refine content directly in the browser. Edited values must be used when generating the submit script.
 6. **Submit section at bottom:**
    - "Submit Selected to OpenScientist" button
    - On click: generates a bash script with `gh issue create` commands for each accepted skill, targeting `OpenScientists/OpenScientist` repo with `--label "skill-submission"`
