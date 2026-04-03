@@ -127,7 +127,7 @@ Then run the extraction:
 **Codex CLI:**
 ```
 /model gpt-5.4
-/effort extra-high
+/reasoning high
 $extract-knowhow
 ```
 

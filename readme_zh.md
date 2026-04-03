@@ -127,7 +127,7 @@ npm install -g @openscientist/extract-knowhow
 **Codex CLI:**
 ```
 /model gpt-5.4
-/effort extra-high
+/reasoning high
 $extract-knowhow
 ```
 
